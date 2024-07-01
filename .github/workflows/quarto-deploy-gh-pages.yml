@@ -24,12 +24,15 @@ jobs:
       - name: Install R Packages
         run: |
           R -e 'install.packages(c("knitr", "rmarkdown", "checkmate"), lib="~/.R/library")'
-          R -e '.libPaths("~/.R/library")'
+      env:
+        R_LIBS_USER: ~/.R/library
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render Quarto Project
+        env:
+          R_LIBS_USER: ~/.R/library
         run: quarto render --output-dir _site
         shell: bash
 
