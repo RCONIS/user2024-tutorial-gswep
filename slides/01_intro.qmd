@@ -224,7 +224,8 @@ knitr::include_graphics("resources/pkg_graph.png")
   [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/pahlke/),
   Kevin Kunzmann 
   [`r fontawesome::fa("github")`](https://github.com/kkmann/) 
-  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/kevin-kunzmann-6486a11bb/),
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/kevin-kunzmann-6486a11bb/)
+- In the current version, changes were done by (later authors):   
   Andrew Bean
   [`r fontawesome::fa("github")`](https://github.com/andrew-bean)
   [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/andrew-bean-83539116/),

@@ -10,8 +10,6 @@ jobs:
   publish:
     name: Build & Deploy
     runs-on: ubuntu-latest
-    container:
-      image: kevinkunzmann/r-swe-workshop-container@sha256:7fbbe09aa2acbc1e458c9924fc28944bba8a38a545b40bc67c0b82b1230d98e7
     permissions:
       contents: write
     strategy:

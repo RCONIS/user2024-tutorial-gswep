@@ -490,6 +490,15 @@ to validate input arguments.
 
 Example:
 
+```{r}
+#| echo: false
+#| eval: true
+if (!require(checkmate)) {
+  install.packages("checkmate")
+}
+```
+
+
 ```{r, echo = TRUE, eval = FALSE}
 playWithAssertions <- function(n1) {
   checkmate::assertInt(n1, lower = 1)
