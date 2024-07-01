@@ -2,49 +2,49 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Tutorial: Good Software Engineering Practice for R Packages",
+    "title": "Good Software Engineering Practice for R Packages",
     "section": "",
     "text": "Welcome to the homepage of the tutorial “Good Software Engineering Practice for R Packages”, part of the useR! Conference 2024 in Salzburg, Austria. In this course you will learn hands-on skills and tools to engineer reliable R packages used in statistics. The workshop will be conducted in 3.5 hours and will be a mix of presentations and exercises. Participants need to be comfortable with writing functions in R and use their own laptops as a prerequisite."
   },
   {
     "objectID": "index.html#event-details",
     "href": "index.html#event-details",
-    "title": "Tutorial: Good Software Engineering Practice for R Packages",
+    "title": "Good Software Engineering Practice for R Packages",
     "section": "Event Details",
     "text": "Event Details\nThe event will be held on Monday July 8, 2024 14:00 - 17:30 CEST as an in-person tutorial in the room Tennegau."
   },
   {
     "objectID": "index.html#description",
     "href": "index.html#description",
-    "title": "Tutorial: Good Software Engineering Practice for R Packages",
+    "title": "Good Software Engineering Practice for R Packages",
     "section": "Description",
     "text": "Description\nJoin us for an engaging 3-hour face-to-face course designed to enhance your R programming skills with a focus on developing reliable R packages used in statistics or data science. This course is a blend of informative presentations and interactive team exercises, aimed at equipping participants with practical tools and techniques for engineering high-quality R packages. Throughout the session, you will collaborate to build a small R package that adheres to clean code rules and incorporates good software engineering practices.\nThis course is tailored for individuals who are comfortable with writing functions in R and are looking to elevate their package development skills. Bring your laptop and be prepared to transform your approach to R package development through hands-on learning and collaboration. Whether you’re looking to improve your workflow, meet regulatory standards, or simply enhance the quality of your statistical tools, this course offers valuable insights and skills to achieve your goals."
   },
   {
     "objectID": "index.html#learning-outcomes",
     "href": "index.html#learning-outcomes",
-    "title": "Tutorial: Good Software Engineering Practice for R Packages",
+    "title": "Good Software Engineering Practice for R Packages",
     "section": "Learning Outcomes",
     "text": "Learning Outcomes\nLearn, understand, and practice good software engineering rules. Participants will delve into the significance of good engineering habits to avoid the pitfalls of maintenance overload, inefficient development, and regulatory non-compliance. By emphasizing best practices, the course will guide them towards faster releases on CRAN, saving valuable time on refactoring for PoC to release version transitions, and fostering an open environment for community contributions on GitHub. All course materials, including R scripts, will be shared with participants via GitHub, providing easy access to resources for continued learning and application beyond the course."
   },
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
-    "title": "Tutorial: Good Software Engineering Practice for R Packages",
+    "title": "Good Software Engineering Practice for R Packages",
     "section": "Schedule",
     "text": "Schedule\n\n\n\nTime\nTopic\n\n\n\n\n14:00 - 14:30 CEST\nIntroduction and outline\n\n\n14:30 - 15:15 CEST\nR packages, what are they? + practical\n\n\n15:15 - 15:45 CEST\nWorkflow for creating R packages + practical\n\n\n15:45 - 16:30 CEST\nPackage quality + exercise\n\n\n16:30 - 17:15 CEST\nPublication + practical\n\n\n17:15 - 17:30 CEST\nConclusion"
   },
   {
     "objectID": "index.html#prerequisites-technical-setup",
     "href": "index.html#prerequisites-technical-setup",
-    "title": "Tutorial: Good Software Engineering Practice for R Packages",
+    "title": "Good Software Engineering Practice for R Packages",
     "section": "Prerequisites & Technical Setup",
     "text": "Prerequisites & Technical Setup\nPrior to the course, participants should\n\nSet up a (free) GitHub.com account.\n\nNote: There are other git platforms like Gitlab or Bitbucket, but we made the choice to go with GitHub.com for the course, since it is by far the most relevant git platform in the R community.\n\nDownload and extract simulatr.zip\nInstall the latest R and RStudio software.\nInstall Rtools (only on Windows and optional if you want to try out Rcpp)\nInstall additional R packages using the installation script.\n\nFor the course, participants are required to use their own laptop to be able to participate in the exercises.\n\nOptional reading list\n\nExcellent and very comprehensive R Packages (2e)\n(Hardcore) description of how Writing R Extensions works\nGitHub ‘Hello World’ tutorial on how to use GitHub.com (does not require git command line knowledge)\nTutorial on version control with git and SVN (we will be using git)\nCommand line git mini intro trygit\nFirst steps with git & github by RStudio\nRStudio cheatsheets/ Git & GitHub"
   },
   {
     "objectID": "index.html#past-events",
     "href": "index.html#past-events",
-    "title": "Tutorial: Good Software Engineering Practice for R Packages",
+    "title": "Good Software Engineering Practice for R Packages",
     "section": "Past Events",
     "text": "Past Events\n\n10th February 2023, Basel, CH\n24th March 2023, Shanghai, CN\n20th July 2023, San José, CA, US\n26th September 2023, Rockville, MD, US\n16th and 17th October 2023, Montreal, QC, CA"
   },
@@ -676,7 +676,7 @@
     "href": "slides/01_intro.html#speed-intros-and-what-would-you-like-to-learn",
     "title": "1 Introduction",
     "section": "Speed intros and what would you like to learn?",
-    "text": "Speed intros and what would you like to learn?\n\nName? 😄\nOrganization? 🏢\nMotivation for this workshop/ what would you like to learn 🧠\nFavorite food? 🦑\nFavorite music? 🥁"
+    "text": "Speed intros and what would you like to learn?\n\nName? 😃\nOrganization? 🏢\nMotivation for this workshop/ what would you like to learn 🧠\nFavorite food? 🥞\nFavorite music? 🎻"
   },
   {
     "objectID": "slides/01_intro.html#what-do-we-mean-by-gswep4r",
@@ -879,14 +879,14 @@
     "href": "slides/03_workflow.html#example---step-3-packaging-4",
     "title": "3 An R Package Engineering Workflow",
     "section": "Example - Step 3: Packaging",
-    "text": "Example - Step 3: Packaging\nThe output is impractical, e.g., we need to scroll down:\n\nx &lt;- getSimulatedTwoArmMeans(n1 = 50, n2 = 50, mean1 = 5, mean2 = 7, sd1 = 3, sd2 = 4)\nx\n\n$n1\n[1] 50\n\n$n2\n[1] 50\n\n$mean1\n[1] 5\n\n$mean2\n[1] 7\n\n$sd1\n[1] 3\n\n$sd2\n[1] 4\n\n$data\n    group     values\n1       1  1.8870455\n2       1  3.4758747\n3       1  8.0915017\n4       1  5.8773294\n5       1  7.7702186\n6       1  1.6809142\n7       1  7.3057713\n8       1  4.0670313\n9       1  9.0574407\n10      1 12.0173404\n11      1  6.7326901\n12      1  4.4321413\n13      1  3.6988803\n14      1  7.0984859\n15      1  0.9937630\n16      1  9.0646482\n17      1  3.0514999\n18      1  4.4108485\n19      1 -0.9180447\n20      1  0.8790102\n21      1  1.6336076\n22      1  4.4267020\n23      1  2.8388303\n24      1  7.1582735\n25      1  1.2360981\n26      1  7.3716393\n27      1  9.2092675\n28      1  4.8712918\n29      1  6.3547416\n30      1  9.3830437\n31      1  6.3692933\n32      1  2.0833248\n33      1 10.9529877\n34      1  3.2108549\n35      1  6.1108529\n36      1  5.3684038\n37      1  1.2474621\n38      1  6.6416379\n39      1  2.4215676\n40      1  1.9924931\n41      1  1.8039427\n42      1  6.5974855\n43      1  8.5082036\n44      1  1.9512767\n45      1  1.6022819\n46      1 -2.8716946\n47      1  9.8017096\n48      1  7.1997747\n49      1  7.1903413\n50      1  4.5573116\n51      2 10.2295261\n52      2  7.6315888\n53      2  4.4894163\n54      2 11.3729092\n55      2  5.0564217\n56      2  4.0353873\n57      2 13.6549447\n58      2  6.3004309\n59      2 13.5551422\n60      2  6.4418888\n61      2  1.4882465\n62      2 15.9880901\n63      2 12.9646086\n64      2  1.5962047\n65      2  7.9934010\n66      2  7.8595509\n67      2  8.5251575\n68      2  4.7065616\n69      2  9.1095111\n70      2  5.1599681\n71      2  6.8435650\n72      2 -0.4906620\n73      2 -4.8514375\n74      2  8.1740200\n75      2  9.1406803\n76      2  2.6476565\n77      2  4.6518967\n78      2  2.3684374\n79      2  2.9021631\n80      2  7.6927235\n81      2 12.0886699\n82      2  6.6523262\n83      2  5.1870684\n84      2  4.1185417\n85      2  1.5744159\n86      2  8.4222261\n87      2  6.0283900\n88      2  5.5831115\n89      2  8.1405475\n90      2  1.6218006\n91      2  5.3848353\n92      2  9.4351417\n93      2  4.2522144\n94      2  6.3926643\n95      2 12.8373252\n96      2  8.7212204\n97      2 11.5619015\n98      2  2.2296275\n99      2  5.2421338\n100     2  8.3058077\n\nattr(,\"class\")\n[1] \"SimulationResult\"\n\n\n\nSolution: implement generic function print"
+    "text": "Example - Step 3: Packaging\nThe output is impractical, e.g., we need to scroll down:\n\nx &lt;- getSimulatedTwoArmMeans(n1 = 50, n2 = 50, mean1 = 5, mean2 = 7, sd1 = 3, sd2 = 4)\nx\n\n$n1\n[1] 50\n\n$n2\n[1] 50\n\n$mean1\n[1] 5\n\n$mean2\n[1] 7\n\n$sd1\n[1] 3\n\n$sd2\n[1] 4\n\n$data\n    group      values\n1       1 -0.05509300\n2       1  7.24454025\n3       1  5.81291432\n4       1  6.15831923\n5       1  5.61583431\n6       1  4.72730370\n7       1  2.84735250\n8       1  8.44510218\n9       1 10.73206697\n10      1  4.42190021\n11      1  5.07463748\n12      1  4.94975680\n13      1  5.22226342\n14      1  0.04427797\n15      1  2.32924924\n16      1  5.15572124\n17      1  5.43770357\n18      1  2.62296803\n19      1  6.36499984\n20      1 10.47151544\n21      1  3.00610559\n22      1  4.77848341\n23      1  6.28498521\n24      1  4.01487700\n25      1  9.41132144\n26      1  4.89870644\n27      1  6.10013674\n28      1  4.17233176\n29      1  3.25416115\n30      1 -1.13000372\n31      1 -2.08338649\n32      1  5.15972598\n33      1  7.48770251\n34      1  4.46111215\n35      1  5.96441780\n36      1  8.37358558\n37      1  8.45568060\n38      1  8.27189720\n39      1  8.27845859\n40      1  4.39642344\n41      1  4.87362543\n42      1  3.74369654\n43      1  5.26714582\n44      1  4.42116909\n45      1  1.64764376\n46      1  6.38721189\n47      1  7.40557391\n48      1  3.54849761\n49      1  7.36983572\n50      1  5.49374057\n51      2  3.07349027\n52      2  5.95202744\n53      2  7.57242751\n54      2 11.15328902\n55      2  3.22459202\n56      2  8.37394954\n57      2 12.62710126\n58      2 10.06594445\n59      2  7.86348696\n60      2  4.57312475\n61      2  8.56212393\n62      2  6.25250955\n63      2 10.22601885\n64      2  1.05138489\n65      2  5.88495996\n66      2  4.97032661\n67      2  9.18495921\n68      2  8.45707466\n69      2  3.48104880\n70      2 10.27248542\n71      2  2.88190086\n72      2 13.23000487\n73      2 14.12800269\n74      2  6.05095859\n75      2  6.08041152\n76      2  2.77073485\n77      2  1.75188106\n78      2  4.65006670\n79      2 -1.48600259\n80      2  4.58289019\n81      2  6.44192248\n82      2  7.88081268\n83      2  2.12807659\n84      2  8.54405081\n85      2  4.92013236\n86      2  4.57156109\n87      2  7.71401695\n88      2 -0.94020908\n89      2  2.82758426\n90      2  6.66058204\n91      2  8.45559271\n92      2 10.00562073\n93      2  5.17302023\n94      2  7.27699923\n95      2 15.41638348\n96      2  7.54950377\n97      2 14.38085449\n98      2  8.14742415\n99      2  6.65783429\n100     2 12.09409914\n\nattr(,\"class\")\n[1] \"SimulationResult\"\n\n\n\nSolution: implement generic function print"
   },
   {
     "objectID": "slides/03_workflow.html#example---step-3-packaging-5",
     "href": "slides/03_workflow.html#example---step-3-packaging-5",
     "title": "3 An R Package Engineering Workflow",
     "section": "Example - Step 3: Packaging",
-    "text": "Example - Step 3: Packaging\nGeneric function print:\n\nCodeRoxygenOutput\n\n\n\nprint.SimulationResult &lt;- function(x, ...) {\n    args &lt;- list(n1 = x$n1, n2 = x$n2, \n        mean1 = x$mean1, mean2 = x$mean2, sd1 = x$sd1, sd2 = x$sd2)\n    \n    print(list(\n        args = format(args), \n        data = dplyr::tibble(x$data)\n    ), ...)\n}\nx\n\n\n\n\n#' @title\n#' Print Simulation Result\n#'\n#' @description\n#' Generic function to print a `SimulationResult` object.\n#'\n#' @param x a \\code{SimulationResult} object to print.\n#' @param ... further arguments passed to or from other methods.\n#' \n#' @examples\n#' x &lt;- getSimulatedTwoArmMeans(n1 = 50, n2 = 50, mean1 = 5, \n#'      mean2 = 7, sd1 = 3, sd2 = 4, seed = 123)\n#' print(x)\n#'\n#' @export\n\n\n\n\n\n$args\n   n1    n2 mean1 mean2   sd1   sd2 \n \"50\"  \"50\"   \"5\"   \"7\"   \"3\"   \"4\" \n\n$data\n# A tibble: 100 × 2\n   group values\n   &lt;dbl&gt;  &lt;dbl&gt;\n 1     1   1.89\n 2     1   3.48\n 3     1   8.09\n 4     1   5.88\n 5     1   7.77\n 6     1   1.68\n 7     1   7.31\n 8     1   4.07\n 9     1   9.06\n10     1  12.0 \n# ℹ 90 more rows"
+    "text": "Example - Step 3: Packaging\nGeneric function print:\n\nCodeRoxygenOutput\n\n\n\nprint.SimulationResult &lt;- function(x, ...) {\n    args &lt;- list(n1 = x$n1, n2 = x$n2, \n        mean1 = x$mean1, mean2 = x$mean2, sd1 = x$sd1, sd2 = x$sd2)\n    \n    print(list(\n        args = format(args), \n        data = dplyr::tibble(x$data)\n    ), ...)\n}\nx\n\n\n\n\n#' @title\n#' Print Simulation Result\n#'\n#' @description\n#' Generic function to print a `SimulationResult` object.\n#'\n#' @param x a \\code{SimulationResult} object to print.\n#' @param ... further arguments passed to or from other methods.\n#' \n#' @examples\n#' x &lt;- getSimulatedTwoArmMeans(n1 = 50, n2 = 50, mean1 = 5, \n#'      mean2 = 7, sd1 = 3, sd2 = 4, seed = 123)\n#' print(x)\n#'\n#' @export\n\n\n\n\n\n$args\n   n1    n2 mean1 mean2   sd1   sd2 \n \"50\"  \"50\"   \"5\"   \"7\"   \"3\"   \"4\" \n\n$data\n# A tibble: 100 × 2\n   group  values\n   &lt;dbl&gt;   &lt;dbl&gt;\n 1     1 -0.0551\n 2     1  7.24  \n 3     1  5.81  \n 4     1  6.16  \n 5     1  5.62  \n 6     1  4.73  \n 7     1  2.85  \n 8     1  8.45  \n 9     1 10.7   \n10     1  4.42  \n# ℹ 90 more rows"
   },
   {
     "objectID": "slides/03_workflow.html#preparation",
