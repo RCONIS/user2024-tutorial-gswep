@@ -55,6 +55,7 @@ pexels.com]{.copyright}](thumbnails/workflow1.jpg){fig-align="center"}
       a. User Requirements Spec (URS), 
       b. Functional Spec (FS), and 
       c. Software Design Spec (SDS)
+      d. Test Plan (TP)
 :::
 
 ::: {.column width="45%"}
@@ -72,6 +73,7 @@ pexels.com]{.copyright}](thumbnails/workflow1.jpg){fig-align="center"}
 
 ::: columns
 ::: {.column width="60%"}
+*Extensive documentation, huge paperwork, lots of manual work, lots of signatures, ...*
 :::
 
 ::: {.column width="40%"}
@@ -110,7 +112,7 @@ pexels.com]{.copyright}](thumbnails/workflow2.jpg){fig-align="center"}
 
 . . .
 
-[{{< fa face-angry size=1x >}}]{.yellow} Bad practice!
+[{{< fa face-angry size=2x >}}]{.yellow} Bad practice!
 
 . . .
 
@@ -120,7 +122,14 @@ pexels.com]{.copyright}](thumbnails/workflow2.jpg){fig-align="center"}
 
 <!-- https://www.researchgate.net/figure/Cost-Distribution-among-Software-Process-Activities-12_fig1_340280214 -->
 
-```{r, echo = FALSE, eval = TRUE, render = TRUE, fig.cap = "Cost distribution among software process activities", fig.subcap = "[doi:10.14569/IJACSA.2020.0110375](https://dx.doi.org/10.14569/IJACSA.2020.0110375)"}
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| render: true
+#| fig.cap: "Cost distribution among software process activities"
+#| fig.subcap: "[doi:10.14569/IJACSA.2020.0110375](https://dx.doi.org/10.14569/IJACSA.2020.0110375)"
 library("ggplot2") 
 library("dplyr")
 classes <- c("Design (12%)", "Coding (6%)", "Testing (12%)", "Maintenance (70%)")
@@ -150,7 +159,14 @@ ggplot(effortData, aes(x = "", y = prop, fill = class)) +
 
 ## Why practice good engineering?
 
-```{r, echo = FALSE, eval = TRUE, render = TRUE, fig.cap = "Origin of errors in system development", fig.subcap = "[Boehm, B. (1981). Software Engineering Economics. Prentice Hall.](https://dl.acm.org/doi/10.5555/539425)"}
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| render: true
+#| fig.cap: "Origin of errors in system development"
+#| fig.subcap: "[Boehm, B. (1981). Software Engineering Economics. Prentice Hall.](https://dl.acm.org/doi/10.5555/539425)"
 library("ggplot2") 
 library("dplyr")
 classes <- c("Analysis Errors (60%)", "Design and Implementation Errors (40%)")
@@ -261,11 +277,11 @@ Idea: put the code into a package
 
 **Purpose and Scope**
 
-The R package *simulatr* shall enable the creation of reproducible fake data.
+The R package *simulatr* is intended to enable the creation of reproducible fake data.
 
 **Package Requirements**
 
-*simulatr* **shall** provide a function to generate normal distributed random
+*simulatr* **must** provide a function to generate normal distributed random
 data for two independent groups. The function **must** allow flexible
 definition of sample size per group, mean per group, standard deviation per
 group. The reproducibility of the simulated data **must** be ensured via an

@@ -5,3 +5,8 @@
   font-size: 0.6em;
 }
 
+#schedule td,
+#schedule th {
+  padding: 4px;
+  margin: 0px;
+}

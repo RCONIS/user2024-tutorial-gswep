@@ -353,8 +353,7 @@ Recommended quality workflow for R packages:
 CCR#8: TDD
 :::
 
-![[Photo CC0 by ThisIsEngineering on
-pexels.com]{.copyright}](thumbnails/testing.jpg){fig-align="center"}
+![](thumbnails/testing.jpg){fig-align="center"}
 
 ## Verification vs Validation
 
@@ -425,8 +424,7 @@ Unit tests help to increase the reliability and maintainability of the code
 
 # Testing in Practice
 
-![[Photo CC0 by cottonbro studio on
-pexels.com]{.copyright}](thumbnails/coding_cottonbro-studio.jpg){fig-align="center"}
+![](thumbnails/coding_cottonbro-studio.jpg){fig-align="center"}
 
 
 ## How to realize testing with R?
@@ -609,8 +607,7 @@ We can go into the details by clicking on a file name:
 CCR#2: Formatting
 :::
 
-![[Photo CC0 by Pavel Danilyuk on
-pexels.com]{.copyright}](thumbnails/styling.jpg){fig-align="center"}
+![](thumbnails/styling.jpg){fig-align="center"}
 
 ## Why is Code Style important?
 
@@ -668,8 +665,7 @@ How to link the [styler](https://styler.r-lib.org)[^10] package to a keyboard sh
 ```
 # Exercise
 
-![[Photo CC0 by Pixabay on
-pexels.com]{.copyright}](thumbnails/exercise.jpg){fig-align="center"}
+![](thumbnails/exercise.jpg){fig-align="center"}
 
 ## Please install the following packages before we moving on
 
@@ -734,8 +730,4 @@ Check if your package is ready for release with the
 
 - Creators (initial authors): 
   Friedrich Pahlke [`r fontawesome::fa("github")`](https://github.com/fpahlke/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/pahlke/)
-- In the current version, changes were done by (later authors): 
-  Joe Zhu [`r fontawesome::fa("github")`](https://github.com/shajoezhu) [`r fontawesome::fa("linkedin")`](http://www.linkedin.com/in/joe-zhu-464b5818), Andrew Bean 
-  [`r fontawesome::fa("github")`](https://github.com/andrew-bean) 
-  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/andrew-bean-83539116/)
 {{< include _license_footer.qmd >}}
