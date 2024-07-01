@@ -11,18 +11,6 @@ author: Friedrich Pahlke
 
 ## Why is Clean Code important?
 
-```{r}
-#| echo: false
-#| include: false
-#| eval: true
-if (!require(rmarkdown)) {
-  install.packages("rmarkdown")
-}
-if (!require(knitr)) {
-  install.packages("knitr")
-}
-```
-
 -   **Maintainability**: The code is readable and understandable and has a
     reduced complexity, i.e., it's easier to fix bugs
 -   **Extensibility**: The architecture is simpler, cleaner, and more

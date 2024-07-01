@@ -38,21 +38,6 @@ world...
 :::
 :::
 
-```{r}
-#| echo: false
-#| include: false
-#| eval: true
-if (!require(checkmate)) {
-  install.packages("checkmate")
-}
-if (!require(rmarkdown)) {
-  install.packages("rmarkdown")
-}
-if (!require(knitr)) {
-  install.packages("knitr")
-}
-```
-
 # Professional Workflow
 
 ![[Photo CC0 by ELEVATE on
