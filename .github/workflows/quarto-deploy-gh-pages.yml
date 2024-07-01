@@ -18,9 +18,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Create R Library Directory
+        run: mkdir -p ~/.R/library
+
       - name: Install R Packages
         run: |
-          R -e 'install.packages(c("rmarkdown", "checkmate"))'
+          R -e 'install.packages(c("rmarkdown", "checkmate"), lib="~/.R/library")'
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
