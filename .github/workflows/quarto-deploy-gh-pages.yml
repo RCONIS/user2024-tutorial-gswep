@@ -18,6 +18,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Install R Packages
+        run: |
+          R -e 'install.packages(c("rmarkdown", "checkmate"), repos="https://cloud.r-project.org")'
+
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 

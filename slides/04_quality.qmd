@@ -283,14 +283,6 @@ getMean(c("a", "b", "c"))
 
 ## Example: CCR#7
 
-```{r}
-#| echo: false
-#| eval: true
-if (!require(checkmate)) {
-  install.packages("checkmate")
-}
-```
-
 ```{r, echo = TRUE, eval = FALSE}
 #| code-line-numbers: "3,9,15"
 #| style: font-size:0.9em!important;
