@@ -18,10 +18,12 @@ website:
         icon: "file-earmark-slides"
   page-footer:
     center:
-      - text: "About the Software Engineering Working Group"
-        href: https://rconsortium.github.io/asa-biop-swe-wg/
-      - text: "Source Code on GitHub"
-        href: https://github.com/RCONIS/user2024-tutorial-gswep
+      - text: "About"
+        href: https://rconis.com/about/
+      - text: "Imprint"
+        href: https://rconis.com/imprint/
+      - text: "Contact"
+        href: https://rconis.com/contact/
 
 format:
   html:
