@@ -29,6 +29,17 @@ Important: To use this work you must provide the name of the creators (initial a
 -->
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+if (!require(checkmate)) {
+  install.packages("checkmate")
+}
+if (!require(rmarkdown)) {
+  install.packages("rmarkdown")
+}
+```
+
 Welcome to the homepage of the tutorial *"Good Software Engineering Practice for R Packages"*, part of the useR! Conference 2024 in Salzburg, Austria. In this course you will learn hands-on skills and tools to engineer reliable R packages used in statistics. The workshop will be conducted in 3.5 hours and will be a mix of presentations and exercises. Participants need to be comfortable with writing functions in R and use their own laptops as a prerequisite.
 
 ## Event Details

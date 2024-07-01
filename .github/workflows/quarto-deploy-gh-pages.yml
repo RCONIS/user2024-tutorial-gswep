@@ -20,7 +20,7 @@ jobs:
 
       - name: Install R Packages
         run: |
-          R -e 'install.packages(c("rmarkdown", "checkmate"), repos="https://cloud.r-project.org")'
+          R -e 'install.packages(c("rmarkdown", "checkmate"))'
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
