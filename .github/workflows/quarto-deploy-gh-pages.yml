@@ -18,6 +18,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 'latest'
+
       - name: Render Quarto Project
         run: quarto render --output-dir _site
         shell: bash
