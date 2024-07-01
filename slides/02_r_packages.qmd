@@ -7,6 +7,19 @@ author: Daniel Sabanés Bové
 
 # Introduction
 
+```{r setup}
+#| include: false
+#| eval: true
+#| echo: false
+.libPaths("~/.R/library")
+if (!require(rmarkdown)) {
+  install.packages("rmarkdown")
+}
+if (!require(knitr)) {
+  install.packages("knitr")
+}
+```
+
 ## What You Know Already
 
 - Packages provide a mechanism for loading optional code, data, and

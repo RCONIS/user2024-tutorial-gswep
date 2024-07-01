@@ -23,7 +23,7 @@ jobs:
 
       - name: Install R Packages
         run: |
-          R -e 'install.packages(c("rmarkdown", "checkmate"), lib="~/.R/library")'
+          R -e 'install.packages(c("knitr", "rmarkdown", "checkmate"), lib="~/.R/library")'
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
