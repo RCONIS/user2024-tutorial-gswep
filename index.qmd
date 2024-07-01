@@ -1,6 +1,12 @@
 ---
-title: "Tutorial: Good Software Engineering Practice for R Packages"
+title: "Good Software Engineering Practice for R Packages"
+description: 'UseR! Tutorial'
 author: Daniel Sabanés Bové and Friedrich Pahlke
+institute: '[![RCONIS](slides/resources/RCONIS_100.png)](https://www.rconis.com "RPACT Company Website")'
+creator: Daniel Sabanés Bové and Friedrich Pahlke
+keywords: "rconis, gswep, r, gxp"
+email-obfuscation: javascript
+title-meta: 'rconis'
 ---
 
 ```{=html}
