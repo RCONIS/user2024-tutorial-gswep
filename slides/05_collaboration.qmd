@@ -1,0 +1,385 @@
+---
+title: "5 Version Control & Collaboration"
+description: "Collaboration via GitHub + practical"
+image: thumbnails/collaboration.jpg
+author: Daniel Sabanés Bové
+---
+
+## Disclaimer
+
+</br></br></br>
+
+```{r, echo = FALSE, results = 'hide'}
+# Workaround for the following Quarto issue (do not remove):
+# Quarto will not render embedded R code unless at least one R code chunk exists
+```
+
+*Any opinions expressed in this presentation and on the following slides are solely those of the presenter and not necessarily those of their respective employer or company.*
+
+##  {background-image="resources/scratch.jpg"}
+
+::: {.absolute bottom="100" left="0" right="500"}
+-   Overview, demo, practical
+-   Can only scratch surface
+-   More resources on [website](https://openpharma.github.io/workshop-r-swe-mtl/#optional-reading-list)
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@rhubbardstockfootage?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rich \@ rhubbardstockfootage</a> on <a href="https://unsplash.com/photos/dEATKItQazc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+## Trade-offs in code development
+
+</br>
+
+::: columns
+::: {.column width="50%"}
+### Working alone
+
+-   no coordination overhead
+-   no review
+-   lack of diversity
+-   can slack on documentation
+-   fragile long-term maintenance
+:::
+
+::: {.column width="50%"}
+### Working in a team
+
+-   coordination overhead
+-   mutual review of code
+-   different approaches
+-   forced to document
+-   more robust long-term maintenance
+:::
+:::
+
+##  {background-image="resources/complexity.jpg"}
+
+::: {.absolute top="250" left="625"}
+**Key issue:</br> Manage complexity over time or between people**
+:::
+
+::: footer
+Photo from <a href="https://unsplash.com/@timmossholder?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tim Mossholder</a> on <a href="https://unsplash.com/de/fotos/FwzhysPCQZc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+## Version control systems (VCS)
+
+-   Manage different versions of a piece of work
+-   Compare and merge diverged versions **effectively**^[Merging parallel edits is not simple (try it in MS Word 365)]
+
+```{mermaid}
+flowchart LR
+  A[Daniel v1] --> B[Daniel v2]
+  B --> C[Daniel v3]
+  B --> D[Lukas v1]
+  D --> E[Lukas + Daniel v4]
+  C --> E
+```
+
+-   Code is complex system $\leadsto$ ideal application of VCS
+-   Compounded by multiple people 'fiddling' with it!
+
+# git basics
+
+## Enter git `r fontawesome::fa("git-alt")` the 'Latin of data science'
+
+::: columns
+::: {.column width="30%"}
+![](resources/linus.jpg)
+:::
+
+::: {.column width="70%"}
+-   Author Linus Torvalds, for work on Linux kernel
+-   Essentially a database with snapshots of a monitored 'repository' (directory)
+-   Optimized to compute line-based changes
+-   Integrated in RStudio IDE, Visual Studio Code
+-   De facto standard not just in the R world
+-   Alternatives: mercurial, SVN, ...
+:::
+:::
+
+::: footer
+[Photo](https://commons.wikimedia.org/w/index.php?curid=108824226) by Lf Asia & the Archive Team CC BY 3.0
+:::
+
+## Stage & commit
+
+::: columns
+::: {.column width="30%"}
+![](resources/commit.jpg)
+:::
+
+::: {.column width="70%"}
+```{mermaid}
+%%| fig-width: 6
+%%| fig-height: 2
+gitGraph
+   commit
+   commit
+   commit
+   commit
+   commit
+```
+
+1.  'Stage' changes for inspection
+    * allows to inspect propose changes before locking them in
+2.  Permanently 'commit' changes to git
+
+$\leadsto$ Chain of versions with incremental changes
+
+:::
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@feliciamontenegro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Felicia Montenegro</a> on <a href="https://unsplash.com/photos/VKnWrMnxahg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+## Line-based differences - the 'diff'
+
+![](resources/diff-example.jpg){width="80%" fig-align="center"}
+
+-   Changes in git are line-based
+-   Additions (green) & deletions (red) between commits
+
+## Going back in time
+
+::: columns
+::: {.column width="30%"}
+![](resources/delorean.jpg)
+:::
+
+::: {.column width="70%"}
+-   Every commit has unique hash value
+-   Can 'checkout' old commit (browse history)
+```
+git checkout [commit hash to browse]
+```
+-   Can 'reset' changes
+```
+git reset --hard [commit hash to reset to]
+```
+-   Removes need for `my-file_final_v2_2019.R`
+-   Time travelling has its dangers...^[Never change published history!]
+:::
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@milatovar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mila Tovar</a> on <a href="https://unsplash.com/photos/nZ6Gg6zgfbE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+## Branching
+
+::: columns
+::: {.column width="30%"}
+![](resources/branch.jpg)
+:::
+
+::: {.column width="70%"}
+```{mermaid}
+%%| fig-width: 6
+%%| fig-height: 2
+gitGraph
+   commit
+   commit
+   branch feature
+   checkout feature
+   commit
+   commit
+   checkout main
+   commit
+```
+
+-   Variations of repository: 'branches'
+```
+git checkout -b [my new branch]
+```
+-   Quick switching between branches
+```
+git checkout [branch name]
+```
+:::
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@milatovar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mila Tovar</a> on <a href="https://unsplash.com/photos/nZ6Gg6zgfbE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+## 'Merging' two branches
+
+::: columns
+::: {.column width="30%"}
+![](resources/merge.jpg)
+:::
+
+::: {.column width="70%"}
+```{mermaid}
+%%| fig-width: 6
+%%| fig-height: 2
+gitGraph
+   commit
+   commit
+   branch feature
+   checkout feature
+   commit
+   commit
+   checkout main
+   commit
+   merge feature
+```
+
+- Consolidate diverged 'branches'
+- Usually merged automergically
+- Conflicting changes `r fontawesome::fa("skull")`
+- Line edited in source/target branch - keep which?
+- [Resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line) beyond today's scope
+:::
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@maxlarochelle?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Max LaRochelle</a> on <a href="https://unsplash.com/photos/c-vWdiICscA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+:::
+
+## Example of 'gitflow'
+
+```{mermaid}
+%%| fig-width: 8
+%%| fig-height: 4
+gitGraph
+   commit tag: "v0.0.1"
+   commit
+   branch feature-1
+   checkout feature-1
+   commit
+   commit
+   checkout main
+   branch feature-2
+   checkout feature-2
+   commit
+   checkout feature-1
+   commit
+   checkout main
+   commit tag: "bugfix"
+   merge feature-1 tag: "v0.1.0"
+   checkout feature-2
+   commit
+```
+
+-   'gitflow': specific workflow for git repositories
+-   features developed on branches, then merged into 'main'
+
+## Version Control & Collaboration
+
+- git itself is command line tool for version control
+- **git platforms add UI for collaboration**^[All platforms also available on-premise for enterprise use]
+    - [GitHub.com](https://github.com) de facto standard in R (one alternative is e.g. [GitLab.com](https://gitlab.com/))
+- git + GitHub
+  - VCS (git)
+  - Web hosting of code (GitHub)
+  - Organisation with issues, discussions (GitHub)
+  - Automation of checks/test (GitHub)
+
+# git platforms
+
+## GitHub.com `r fontawesome::fa("github")`
+
+- Huge number of R packages developed there:
+  - [ggplot2](https://github.com/tidyverse/ggplot2)
+  - [dplyr](https://github.com/tidyverse/dplyr)
+  - [pharmaverse](https://github.com/pharmaverse)
+- 100 million developers on GitHub.com (Jan '23), see [GitHub blog](https://github.blog/2023-01-25-100-million-developers-and-counting/)
+- 372 million repositories, 28 million public (Jan '23)
+- 'Facebook' of developers / social coding
+- Discuss problems / propose changes
+
+
+## Branches & pull requests
+
+- Branches are a git concept
+- Git platforms add concept of 'pull request' (PR)
+    - PR is 'suggested merge' from branch A to B
+    - Usually from 'feature A' to 'main'
+- Allow to **preview problems before merge** and **discuss changes**
+- Once everyone is happy, a pull request^[technically its associated branch] can be merged
+- Every PR has an associated branch, but not every branch has a PR
+- **More in the demo!**
+
+## Automating things with GitHub
+
+- GitHub provides
+    - cloud compute
+    - scripting framework ([GitHub actions](https://github.com/features/actions))
+- Allows task automation, e.g.
+    -   run unit tests
+    -   build & host documentation
+    -   static code analysis (linting)
+- Most important actions for R: [github.com/r-lib/actions](https://github.com/r-lib/actions)
+- Extremely useful to enforce best-practices & quality
+
+## A typical GitHub workflow {.scrollable}
+
+```{mermaid}
+sequenceDiagram
+    participant A as Daniel
+    participant GH as GitHub server
+    participant B as Lukas
+    A->>A: make change locally & commit to <feature>
+    A->>GH: push commit
+    A->>GH: open pull request
+    GH->>GH: run automated checks
+    A->>B: request review
+    B->>B: review code
+    B->>A: request changes
+    A->>A: implement changes locally & commit
+    A->>GH: push commit
+    GH->>GH: run automated checks
+    A->>B: request review
+    B->>B: review code
+    B->>GH: approve changes, unblocking merge
+    A->>GH: merge <feature> into <main>
+    GH->>GH: run automated checks on <main>
+    B->>GH: pull newest version of <main>
+```
+
+## Looks awfully complicated, why?
+
+-   Efficient collaboration with novice/untrusted contributors
+    - Maintainer: automated checks reduce review burden
+    - Contributor: no need to check manually
+-   Branching promotes asynchronous work on features
+-   Full history - can always go back
+
+**$\leadsto$ making code-collaboration scalable**
+
+## Demo
+
+-   Thanks to Lukas Graz for helping me in this demo!
+-   How does a pull request work?
+-   First steps for setting up the next practical
+-   Don't panic - steps are all documented at </br> <https://github.com/kkmann/simulatr>
+
+## Practical - collaboration on GitHub
+
+-   Work in teams of ~ 3 or 4
+-   Go to <https://github.com/kkmann/simulatr> and read through the instructions
+    in the README.md file
+-   The repository is a **template** to practice collaboration on GitHub
+-   **Only one member per team needs to use the template** and invite the others
+    as collaborators!
+-   Take some time to checkout the `README.md` file and set up your
+    environment in posit cloud
+-   **Can you fix the errors with some pull requests?**
+-   The purpose of this exercise is to explore the collaboration
+    functionality of GitHub - not to produce a perfect package ;)
+
+# License information
+
+- Creators (initial authors): 
+  Kevin Kunzmann [`r fontawesome::fa("github")`](https://github.com/kkmann/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/kevin-kunzmann-6486a11bb/),
+  Shuang Li [`r fontawesome::fa("github")`](https://github.com/shuangli22)
+- In the current version, changes were done by (later authors): 
+  Daniel Sabanes Bove 
+  [`r fontawesome::fa("github")`](https://github.com/danielinteractive/) 
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/)
+{{< include _license_footer.qmd >}}

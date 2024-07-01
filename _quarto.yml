@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "GSWEP4R Tutorial"
+  description: "useR! Tutorial: Good Software Engineering Practice with R"
+  favicon: favicon.ico
+  site-url: https://RCONIS.github.io/user2024-tutorial-gswep
+  search: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+        icon: "house-fill"
+      - href: listing.qmd
+        text: Slides
+        icon: "file-earmark-slides"
+  page-footer:
+    center:
+      - text: "About the Software Engineering Working Group"
+        href: https://rconsortium.github.io/asa-biop-swe-wg/
+      - text: "Source Code on GitHub"
+        href: https://github.com/RCONIS/user2024-tutorial-gswep
+
+format:
+  html:
+    theme: lux
+    css: styles.css
+    toc: true
+    link-external-icon: false
+    link-external-newwindow: true
+
+editor: source

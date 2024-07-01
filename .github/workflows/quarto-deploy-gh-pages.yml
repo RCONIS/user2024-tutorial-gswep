@@ -1,0 +1,31 @@
+name: Publish Website
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+     - main
+
+jobs:
+  publish:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    container:
+      image: kevinkunzmann/r-swe-workshop-container@sha256:7fbbe09aa2acbc1e458c9924fc28944bba8a38a545b40bc67c0b82b1230d98e7
+    permissions:
+      contents: write
+    strategy:
+      max-parallel: 1
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Render Quarto Project
+        run: quarto render --output-dir _site
+        shell: bash
+
+      - name: Publish Project
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site

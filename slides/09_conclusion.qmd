@@ -1,0 +1,115 @@
+---
+title: "6 Conclusion"
+description: "Discussion of learning experience, summary of workflow, conclusion and next steps."
+image: thumbnails/conclusion.jpg
+author: Daniel Sabanés Bové
+---
+
+# Temperature check
+
+```{r, echo = FALSE, results = 'hide'}
+# Workaround for the following Quarto issue (do not remove):
+# Quarto will not render embedded R code unless at least one R code chunk exists
+```
+
+## Enter slido.com: 2189872
+
+![](resources/tempcheck.png)
+
+##  {background-iframe="https://app.sli.do/event/d7Eiw4hUxvMAeBgruDMGMw" background-interactive="true"}
+
+# Take away messages
+
+## R package structure
+
+-   R package = folder structure with (many) conventions
+-   With modern tools `usethis`, `roxygen2` it is easy to start a new package
+-   Packaging a set of functions is an ideal way to share with collaborators and the public
+-   Start small and simple and over time you can learn additional options
+
+## Engineering Workflow
+
+-   Use a workable workflow:\
+    Idea $\rightarrow$ Design docs $\rightarrow$ Programming $\rightarrow$ Quality check $\rightarrow$ Publication
+    -   Don't waste time on maintenance
+    -   Be faster with release on CRAN
+    -   Fulfill quality requirements of yourself and stakeholders
+-   Refactor your one-off scripts that you want to use in a package
+-   Use assertions for all arguments $\rightarrow$ better user experience
+-   Implement common generics like `print` and `plot`
+
+## Ensuring Quality
+
+-   Apply common clean code rules, e.g.,
+    -   Use [testthat](https://cran.r-project.org/package=testthat) to test, test, and test
+    -   Use [covr](https://cran.r-project.org/package=covr) to improve the test coverage
+    -   Use [styler](https://styler.r-lib.org) to optimize the code styling
+    -   Don't repeat yourself!
+-   Your rewards are:
+    -   **Maintainability**,
+    -   **Extensibility**, and
+    -   **Performance**!
+
+## Collaboration
+
+- **Version control is key**
+    - Multiple people working on code without strong VC $\leadsto$ disaster!
+    - There are different options, but git is the defacto standard for R packages
+    - Git needs a friend - use platforms like GitHub or GitLab
+- **Automated CI/CD allows for much quicker iteration**
+    - Automate tests to avoid bugs slipping back in
+- **Technology does not solve everything - foster a positive culture**
+    - Keep internal and external contributors engaged
+    - Invest in documentation to make it easier to contribute
+    
+## Publication
+
+-   `pkgdown` can help you easily create a nice website for your package
+-   Versions and licenses along with `NEWS` updates are important
+-   GitHub helps with tagging of release versions
+-   R-Hub helps with checking before CRAN submission
+
+## Shiny
+
+-   Best practices are not just important for R packages, also for Shiny!
+-   Design UI and package structure first, minimize actual Shiny code
+-   Shiny modules help to make the reactivity manageable
+-   Use normal tests for static code, server tests and `shinytest2` for Shiny code
+
+## Optimization
+
+-   Optimization is an advanced task, which should usally only come last
+-   Make sure to invest your development time where it matters by profiling the code first
+-   Keep in mind: explore fast alternative packages, don't repeat or copy, vectorize where possible.
+-   If necessary, consider using some C++, but keep in mind maintenance burden
+
+# Closing remarks
+
+## Thank you!
+
+::: columns
+::: {.column width="30%"}
+![](resources/thank-you.jpg)
+:::
+
+::: {.column width="70%"}
+-   It was great to teach you today (and yesterday) on how to build R packages
+-   Let's keep in touch e.g. via the [gitter chat channel](https://gitter.im/workshop-r-swe/community) for this course that you can connect to
+-   We welcome feedback on topics/format/content - reach out!
+:::
+:::
+
+## Possible next steps
+
+-   Bring the information back to your colleagues in your organization
+-   Start building your first own package and share internally first
+-   Later publish it open source on GitHub and submit it to CRAN
+-   Learn about more tips and tricks how to extend R
+
+![Photo by Pixabay on pexels.com](resources/stairs.jpg)
+
+# License information
+
+- Creators (initial authors): 
+  Daniel Sabanes Bove [`r fontawesome::fa("github")`](https://github.com/danielinteractive/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/)
+{{< include _license_footer.qmd >}}

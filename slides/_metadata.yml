@@ -1,0 +1,26 @@
+subtitle: "Tutorial: Good Software Engineering Practice for R Packages"
+date: "2024-07-08"
+date-format: long
+tags: [R, Package]
+license: 'CC BY-SA'
+email-obfuscation: javascript
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    fontsize: 34px
+    toc: false
+    slide-number: true
+    progress: true
+    code-line-numbers: true
+    mouse-wheel: false
+    link-external-newwindow: true
+    footer: 'Good Software Engineering Practice for R Packages - [Home](../index.html "GSWEP4R Tutorial") | [Slides](../listing.html "Overview of all slides") | [License](http://creativecommons.org/licenses/by-sa/4.0/ "License: CC BY-SA 4.0")'
+    title-slide-attributes:
+        data-background-image: "resources/RCONIS.png"
+        data-background-size: "200px 200px"
+        data-background-position: "20px 20px"
+        data-background-opacity: "1"
+lang: en
+editor:
+  markdown:
+    wrap: 80

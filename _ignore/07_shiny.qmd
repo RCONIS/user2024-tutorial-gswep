@@ -1,0 +1,468 @@
+---
+title: "7 Shiny Development"
+description: "Best Practices for Shiny App Development<br/>[Photo by Pixabay on pexels.com]{.copyright}"
+image: thumbnails/shiny.jpg
+---
+
+## Why are best practices important for Shiny?
+
+- Shiny is in itself more complex than usual R code
+- Small apps can quickly evolve into giant apps
+- It seems first possible to test everything by hand, clicking around
+- For one-off, throw-away, one-screen Shiny apps that is ok
+- Here we talk about best practices for more-than-once used Shiny apps
+
+# Design
+
+## Design: Collaborate with your customer
+
+- Involve your customer from the first ideation
+- Identify the roles and responsibilities
+- Make reasonable assumptions about user skills and knowledge
+- Show early wireframes, prototypes, beta versions and get feedback
+
+## UI Design: Wireframing
+
+- Wireframing is powerful for aligning in customer discussions
+- Focus on the vision and functionality
+- Keep the UI as simple as possible
+- Know your target as developer during coding and review process
+- Wireframing software:
+  - [draw.io](https://draw.io)
+  - [Balsamiq](https://balsamiq.com/)
+  - [Mockplus](https://www.mockplus.cn/)
+  
+## UI Design: Example wireframe
+
+![](resources/wireframe.png){fig-align="center"}
+
+## Shiny specific tool: `ShinyUiEditor` {background-iframe="https://rstudio.github.io/shinyuieditor/"} 
+
+# Architecture
+
+## Architecture: Minimize code in Shiny
+
+- Minimize the code inside the Shiny UI/server
+- Because it will always be easier to test things that live outside of Shiny
+- Let's look at an example from the [Mastering Shiny](https://mastering-shiny.org/scaling-functions.html#function-upload) book
+
+## Minimize Shiny Example: Before
+
+::: columns
+::: {.column width="50%"}
+```{r, echo = TRUE}
+#| code-line-numbers: "6-11"
+#| style: font-size:0.7em!important;
+server <- function(input, output, session) {
+  data <- reactive({
+    req(input$file)
+    name <- input$file$name
+    path <- input$file$datapath
+    ext <- tools::file_ext(name)
+    switch(ext,
+      csv = vroom::vroom(path, ","),
+      tsv = vroom::vroom(path, "\t"),
+      validate("Invalid file")
+    )
+  })
+  
+  output$head <- renderTable({
+    head(data(), input$n)
+  })
+}
+```
+:::
+
+::: {.column width="50%"}
+The `ext` and `switch()` part validates the file extension and then loads the 
+file.
+
+Independent of Shiny reactive!
+:::
+:::
+
+## Minimize Shiny Example: After
+
+::: columns
+::: {.column width="50%"}
+```{r, echo = TRUE}
+#| code-line-numbers: "1-8,13-16"
+#| style: font-size:0.7em!important;
+load_file <- function(name, path) {
+  ext <- tools::file_ext(name)
+  switch(ext,
+    csv = vroom::vroom(path, ","),
+    tsv = vroom::vroom(path, "\t"),
+    validate("Invalid file")
+  )
+}
+
+server <- function(input, output, session) {
+  data <- reactive({
+    req(input$file)
+    load_file(
+      input$file$name, 
+      input$file$datapath
+    )
+  })
+  
+  output$head <- renderTable({
+    head(data(), input$n)
+  })
+}
+```
+:::
+
+::: {.column width="50%"}
+1) normal function, `validate()` will give a simple error outside of Shiny
+
+2) server is much easier to read now and only half the size
+
+3) can test `load_file()` interactively in console
+
+4) can unit tests `load_file()` separately (business as usual)
+:::
+:::
+
+## Minimize Shiny: Separate packages
+
+- On the macro level, this also applies to packages
+- Larger Shiny apps will need to live as an R package
+- The business logic best lives in another R package
+- That package can then also be used without the Shiny interface
+- You can use [`{staged.dependencies}`](https://openpharma.github.io/staged.dependencies/main/) to allow "joint" pull requests
+- Example from the `NEST` package ecosystem: 
+  - `{teal.modules.clinical}` as the Shiny package
+  - `{tern}` as a business logic package
+
+# Modules
+
+## Modules: Building blocks of the Shiny app
+
+- Shiny modules generalize functions 
+- Allows to coordinate UI and server code
+- Breaks the app code into reusable and testable units
+- Let's look at an example from the [Mastering Shiny](https://mastering-shiny.org/scaling-modules.html#module-motivation) book
+
+## Modules Example: Before
+
+::: columns
+::: {.column width="60%"}
+![](resources/without-modules.png){fig-align="center"}
+:::
+
+::: {.column width="40%"}
+- Difficult to understand what is going on
+- Need longer names / parentheses to differentiate tables / plots / variables
+in different places
+- Hard to test
+:::
+:::
+
+## Modules Example: After
+
+::: columns
+::: {.column width="60%"}
+![](resources/with-modules.png){fig-align="center"}
+:::
+
+::: {.column width="40%"}
+- Can easily see the 4 different parts of the app
+- Naming becomes simpler for vars / tables / plots
+- Can reuse the modules separately in other apps
+- Can test the modules separately
+:::
+:::
+
+## Modules: Considerations similar to Functions
+
+- What should be configurable? 
+  - Think about reuse needs for module
+- How to organize arguments?
+    - Use consistent naming conventions
+    - Keep the right order of the arguments
+- Avoid dependencies between arguments
+  - Use instead parameter object pattern
+- How to write good and maintainable code?
+  - Follow all the clean code rules from the previous chapter!
+  
+# Reactivity
+
+## Reactivity
+
+When building production shiny apps you won't get around learning reactivity.
+
+Some guidance:
+
+- Keep user interface simple → often keeps reactivity simple → often less confusing to user
+- Resolve reactive inputs early on & validate generously
+- Design towards "stringy" reactivity graphs
+- Don't interrupt reactivity
+- Preferably use
+  - `reactive` over `reactiveValues` 
+  - `observeEvent` over `observe`
+
+## Reactivity: Resolve early & validate
+
+```{r, echo = TRUE}
+#| code-line-numbers: "3-6,8-13"
+server <- function(input, output, session) {
+  output$plot <- renderPlot({
+    # Resolve reactive values.
+    xvar <- input$xvar
+    yvar <- input$yvar
+    req(xvar, yvar)
+    
+    # Validate – is it likely that the plot will be meaningful?
+    validate(
+      need(xvar %in% names(df), glue("xvar \"{xvar}\" does not exist")),
+      need(yvar %in% names(df), glue("yvar \"{yvar}\" does not exist")),
+      need(nrow(df) > 3, "too few data points for meaningful plot")
+    )
+    
+    my_special_plot(df[[xvar]], df[[yvar]])
+  })
+}
+```
+
+## Reactivity: Debugging techniques
+
+- Put `browser()` into the functions
+- Jump into browser mode upon error with `options(shiny.error = browser)`
+- Just put `print()` inside the reactives
+- Save variables to global environment via `.GlobalEnv$var <- var` and then check
+- Simplify things until it works and then go back
+
+## Reactivity: Graph visualization
+
+To understand the order of execution we can visualize the reactive graph, 
+which describes how sources and endpoints are connected via conductors.
+
+![](resources/legend.png){fig-align="center"}
+
+::: columns
+::: {.column width="33%"}
+e.g. `input`
+:::
+
+::: {.column width="34%"}
+e.g. `reactive`
+:::
+
+::: {.column width="33%"}
+e.g. `output`
+:::
+:::
+
+## Reactivity: "Stringy" reactivity graph
+
+::: columns
+::: {.column width="50%"}
+Bad
+![](resources/connected.png){fig-align="center"}
+Many edges, difficult to anticipate reactivity behaviour
+:::
+ 
+::: {.column width="50%"}
+Good
+![](resources/stringy.png){fig-align="center"}
+This "stringy" reactivity graph is easier to understand and debug
+:::
+:::
+
+# Exercise: Wireframing
+
+- Visit [ShinyUiEditor](https://rstudio.github.io/shinyuieditor) to get an overview
+- Try to build a simple app and see how the code looks like
+- Do you have an idea what could be simplified with modules?
+
+# Testing
+
+## Testing: From Icecream to Pyramid
+
+::: columns
+::: {.column width="50%"}
+Bad
+
+![](resources/icecream.png){height=400}
+
+- cannot always test manually
+- can easily introduce bugs
+:::
+ 
+::: {.column width="50%"}
+Good
+
+![](resources/pyramid.png){height=400}
+
+- manual testing is reduced
+- only for "playing around"
+:::
+:::
+
+## Testing: Snapshot tests for UI
+
+::: columns
+::: {.column width="50%"}
+```{r, echo = TRUE, eval = FALSE}
+#| code-line-numbers: "5-9"
+test_that("myInput UI works", {
+  input <- "foo"
+  set.seed(123)
+  datasets <- mock_datasets()
+  expect_snapshot(myInput(
+    "my_test",
+    datasets = datasets,
+    input = input
+  ))
+})
+```
+:::
+
+::: {.column width="50%"}
+- Shiny UI functions return `shiny.tag` objects which print as HTML code
+- Can use snapshot tests to avoid accidental changes
+- Value is limited
+- Can create issues sometimes (non-reproducible hashes)
+:::
+:::
+
+## Testing: Shiny server tests
+
+::: columns
+::: {.column width="50%"}
+```{r, echo = TRUE, eval = FALSE}
+test_that("server works", {
+  testServer(server, {
+    session$setInputs(...)
+
+    print(reactive1())
+    print(output$output1)
+    # etc
+
+    # To interactively play:
+    # browser()
+  
+    expect_equal(...)
+    # etc.
+  })
+})
+
+```
+:::
+
+::: {.column width="50%"}
+- Code is run inside the server function
+- Can access reactives, outputs, etc.
+- Session object simulates user actions and time
+- Note: need to insert `browser()`
+- Also works for module server functions
+- Limitation: No UI, no JavaScript
+:::
+:::
+
+## Testing: Shiny app tests
+
+::: columns
+::: {.column width="50%"}
+```{r, echo = TRUE, eval = FALSE}
+library(shinytest2)
+test_that("my app works", {
+  app <- AppDriver$new(
+    app_dir = "myAppDir",
+    load_timeout = 1e5,
+    variant = platform_variant()
+  ) # app$get_logs()
+  app$wait_for_idle(timeout = 1e5)
+  app$get_screenshot()
+  app$set_inputs(name = "Hadley")
+  app$get_value("greeting")
+  app$click("reset")
+  app$get_value("greeting")
+})
+```
+:::
+
+::: {.column width="50%"}
+- Usually the app is defined in `myAppDir/app.R`
+- New app instance `app` from `AppDriver$new()`
+- Full Shiny app in a headless `chromote` browser
+- Can look into it via `app$get_screenshot()`
+- We can set inputs, get values of inputs/outputs, click buttons etc.
+:::
+:::
+
+# Additional Topics
+
+## Security
+
+- Never include passwords in your source code! Instead:
+  - Use environment variables
+  - Or use the `{config}` package
+  - Any files containing passwords must be added to `.gitignore`
+- For user authentication, start with existing solutions that are IT approved
+  - See some best practices [here](https://solutions.posit.co/secure-access/auth/kerberos/) and [here](https://db.rstudio.com/best-practices/deployment/).
+- Code run in `server()` is isolated and cannot be seen by other users
+  - But global environment, e.g. options, are shared across sessions
+- Check all user input via assertions or validations to avoid JavaScript hacking
+
+## Packaging
+
+The app should live in an R package. Why? Because we need:
+
+- Metadata and dependencies: from `DESCRIPTION` + `NAMESPACE` files
+- Code split into functions and modules: in files in the the `R` directory
+- Documentation via vignettes, `README`, and function and modules documentation
+- Automated tests: using `testthat` and the native `R CMD check`
+- Able to share the package as tarball or via repositories for installation
+
+## Deployment Options
+
+- [https://www.shinyapps.io/](https://www.shinyapps.io/)
+  - Allows for quick sharing of Shiny apps on the cloud
+  - Free version is good for quick tests or experiments
+  - Serious use needs subscription
+- Internal Posit Connect is internal alternative
+  - More features than above cloud service
+  - One detail example: can use environment variables
+  - See [https://posit.co/products/open-source/shinyserver/](https://posit.co/products/open-source/shinyserver/) for the differences
+
+## Deployment Process
+
+You'll need few extra steps:
+
+1. Instruct the server how to run the app in the package.
+   Simplest is `app.R` in package root folder containing:
+   ```{r, echo = TRUE, eval = FALSE}
+   pkgload::load_all(".")
+   myApp() # = function in your package calling shinyApp()
+   ```
+1. Ignore the `app.R` for package build
+1. Include `shiny` and `pkgload` to the `Imports` in the `DESCRIPTION` file
+1. Run `rsconnect::deployApp()` to share the updated app version!
+
+# Exercise: Testing
+
+Let's look at the following examples.
+
+- Read and execute [`testServer.R`](examples/shiny/testServer.R). Play around with setting different UI inputs and adding additional server tests.
+- Read and execute [`AppDriver.R`](examples/shiny/AppDriver.R). Add a small additional feature to the app and test it.
+- Have a look at [`testModule.R`](examples/shiny/testModule.R). What is different here? Record some additional tests and integrate them into the code.
+
+# References
+
+- Adrian Waddell, Pawel Rucki, Daniel Sabanes Bove (2022).
+  Lessons for designing scalable and maintainable Shiny apps Tutorial at useR 2022.
+  \[[Youtube recording](https://www.youtube.com/watch?v=7o9qjsw4aDU)\]
+- Hadley Wickham (2020). Mastering Shiny. [https://mastering-shiny.org/](https://mastering-shiny.org/)
+- Colin Fay, Sébastien Rochette, Vincent Guyader and Cervan Girard (2022).
+  Engineering Production-Grade Shiny Apps. [https://engineering-shiny.org/](https://engineering-shiny.org/)
+- Colin Gillespie (2019). R and Security Talk at useR 2019.
+  \[[Youtube recording](https://www.youtube.com/watch?v=5odJxZj9LE4)\]
+  
+# License information
+
+- Creators (initial authors): 
+  Daniel Sabanes Bove [`r fontawesome::fa("github")`](https://github.com/danielinteractive/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/),
+  Joe Zhu [`r fontawesome::fa("github")`](https://github.com/shajoezhu) [`r fontawesome::fa("linkedin")`](http://www.linkedin.com/in/joe-zhu-464b5818)
+{{< include _license_footer.qmd >}}

@@ -1,0 +1,499 @@
+---
+title: "10 Reproducibility"
+description: "Ensuring Reproducibility<br/>[Image by Dana Crane on https://www.activestate.com/blog/trust-security-and-the-reproducibility-crisis-in-software/]{.copyright}"
+image: thumbnails/reproducibility-crisis.jpg
+bibliography: references.bib
+---
+
+## Acknowledgments
+
+This section is based on and adapted from great (Quarto) slides by Louisa Smith, see her course website [R Bootcamp (EPI590R) from Northeastern University](https://epi590r-2023.louisahsmith.com/about).
+
+Thanks a lot Louisa!
+
+# Overview
+
+- Literate programming: Quarto
+- Package environment: `renv`
+- Exercise on how to use them together
+
+# Literate Programming: Quarto
+
+## What is Quarto?
+
+-  Format of a book or pamphlet produced from full sheets printed with eight pages of text, four to a side, then folded twice to produce four leaves ([Wikipedia](https://en.wikipedia.org/wiki/Quarto))
+
+::: {.columns}
+::: {.column width="70%"}
+-  An open-source scientific and technical publishing system ([Quarto.org](https://quarto.org/))
+   -  Integrates text, code, and output
+   -  Can create multiple different types of products (documents, slides, websites, books)
+:::
+::: {.column width="30%"}
+![](https://github.com/rstudio/hex-stickers/blob/main/PNG/quarto.png?raw=true){width=80% fig-align="right"}
+:::
+:::
+
+## Why not R Markdown?
+
+Only because Quarto is newer and more featured!
+
+- Almost everything you already know how to do in R Markdown you can do in Quarto, and more!
+   - See a comparison [here](https://quarto.org/docs/faq/rmarkdown.html#i-use-x-bookdown-blogdown-etc..-what-is-the-quarto-equivalent)
+- All of these slides, website, etc. are all made in Quarto.
+- If you know and love R Markdown, you can keep using it
+   - There are no plans for deprecation of R Markdown
+
+## Quarto workflow
+
+1.  Create a Quarto document
+2.  Write code (in R, Python, Julia, or Observable JavaScript)
+3.  Write text (with markdown syntax)
+4.  Repeat 2-3 in whatever order you want
+5.  Render
+
+## How does the rendering work?
+
+-   `knitr` processes the code chunks, executes the R code, and inserts the code outputs (e.g., plots, tables) back into the markdown document
+-   `pandoc` transforms the markdown document into various output formats
+
+![](https://github.com/louisahsmith/epi590r-2023/blob/main/day-2/slides/images/2b931008-dc7c-4bec-92cb-112a55126975.png?raw=true)
+
+## Text and code...
+
+````         
+# My header
+
+Some text
+
+Some *italic text*
+
+Some **bold text**
+
+- Eggs
+- Milk
+
+```{{r}}
+x <- 3
+x
+```
+````
+
+## ... becomes ...
+
+### My header
+
+Some text
+
+Some *italic text*
+
+Some **bold text**
+
+-   Eggs
+-   Milk
+
+```{r}
+x <- 3
+x
+```
+
+## R chunks
+
+Everything within the R chunks has to be valid R.
+
+```{r}
+#| echo: fenced
+x <- 3
+```
+
+```{r}
+#| echo: fenced
+x + 4
+```
+
+Chunks run in order, continuously, like a single script.
+
+## YAML
+
+At the top of your Quarto document, a header written in *yaml* describes options for the document:
+
+``` yml
+---
+title: "My document"
+author: Louisa Smith
+format: html
+---
+```
+
+There are a *ton* of possible options (more below), but importantly, this determines the document output.
+
+## Output
+
+![](https://github.com/louisahsmith/epi590r-2023/blob/main/day-2/slides/images/6f28e7d4-3394-43f9-8b0d-41c52de3883f.png?raw=true)
+
+##  {background-iframe="https://quarto.org/docs/output-formats/all-formats.html" background-interactive="true"}
+
+## Chunk options
+
+For example, to suppress the code printing:
+
+````
+```{{r}}
+#| echo: false
+2 * 2
+```
+````
+`#| echo: false` tells `knitr` to exclude the source code from the output.
+
+:::aside
+In RMarkdown, you would have written this `{r, echo = FALSE}`. You can still do that with Quarto, but it's generally easier to read, particularly for long options (like caption titles)
+:::
+
+## Chunk options
+
+Additional chunk options which are often used:
+
+- `#| eval: false`: Don't evaluate this chunk! Just print the code.
+- `#| error: true`: Render this *even if* the chunk causes an error.
+- `#| warning: false`: Don't print warnings.
+- `#| include: false`: Suppresses all output from the code block.
+- `#| cache: true`: Use `knitr` caching mechanism for this chunk.
+
+## Document options
+
+You can tell the *entire* document not to evaluate or print code (so just include the text!) at the top:
+```yml
+---
+title: "My document"
+author: Louisa Smith
+format: html
+execute:
+  eval: false
+  echo: false
+---
+```
+
+Careful! YAML is *really* picky about spacing.
+
+## Document options
+
+There are [lots of different options](https://quarto.org/docs/reference/formats/html.html) for the document.
+
+- For example, you can choose a [theme](https://quarto.org/docs/output-formats/html-themes.html):
+```yml
+---
+format:
+  html:
+    theme: yeti
+---
+```
+- Remember the pickiness: when you have a format option, `html:` moves to a new line and the options are indented 2 spaces
+
+## Chunks can produce figures and tables
+
+```{r}
+#| echo: fenced
+#| label: tbl-one
+#| tbl-cap: "This is a great table"
+knitr::kable(mtcars[1:3,])
+```
+
+## Chunks can produce figures or tables
+
+```{r}
+#| echo: fenced
+#| label: fig-hist
+#| fig-cap: "This is a histogram"
+hist(rnorm(100))
+```
+
+## Cross-referencing
+
+You can then refer to those with `@tbl-one` and `@fig-hist` and the Table and Figure ordering will be correct (and linked)
+
+::: larger-code
+```         
+@fig-hist contains a histogram and @tbl-one a table.
+```
+:::
+
+gets printed as:
+
+@fig-hist contains a histogram and @tbl-one a table.
+
+## Inline R
+
+Along with just regular text, you can also run R code *within* the text:
+
+::: larger-code
+```
+There were `r knitr::inline_expr("3 + 4")` participants
+```
+:::
+becomes:
+
+There were `r 3 + 4` participants
+
+## Inline stats
+
+You might want to create list of stats that you want to report in your manuscript:
+
+```{r}
+#| eval: false
+stats <- list(n = nrow(data),
+              mean_age = mean(data$age))
+```
+
+I can then print these numbers in the text with:
+
+```{r}
+#| echo: false
+stats <- list(n = 1123,
+              mean_age = 43.5)
+```
+
+There were `` `r knitr::inline_expr("stats$n")` `` participants with a mean age of `` `r knitr::inline_expr("stats$mean_age")` ``.
+
+which turns into:
+
+There were `r stats$n` participants with a mean age of `r stats$mean_age`.
+
+# Package Environment: `{renv}`
+
+## What is `{renv}`?
+
+::: {.columns}
+::: {.column width="70%"}
+
+`{renv}` is an R package for managing project dependencies and creating reproducible package environments.
+:::
+::: {.column width="30%"}
+::: center
+![](https://rstudio.github.io/renv/logo.svg){height=20%}
+:::
+:::
+:::
+
+## Benefits of using `{renv}`
+
+1.  **Isolation:** Installing a new or updated package for one project won’t break your other projects, and vice versa. That’s because `{renv}` gives each project its own, private, library of R packages.
+2.  **Reproducibility:** `{renv}` records the exact package versions you depend on, and ensures those exact versions are the ones that get installed wherever you go.
+3.  **Portability:** Easily transport your projects from one computer to another, even across different platforms. `{renv}` makes it easy to install the packages your project depends on.
+
+## Getting Started with `{renv}`
+
+1.  Install `{renv}` (only once):
+    ```{r}
+    #| eval: false
+    #| echo: true
+    install.packages("renv")
+    ```
+
+1.  Initialize a project (only once):
+    ```{r}
+    #| eval: false
+    #| echo: true
+    renv::init()
+    ```
+
+1.  Install packages:
+    ```{r}
+    #| eval: false
+    #| echo: true
+    install.packages("other_package")
+    # Below only works because we use `renv` here:
+    install.packages("github_user/github_package")
+    ```
+
+1.  Track dependencies via a "lockfile":
+    ```{r}
+    #| eval: false
+    #| echo: true
+    renv::snapshot()
+    ```
+
+## Behind the scenes
+
+-   Your project `.Rprofile` is updated to include:
+    ```{r}
+    #| eval: false
+    #| echo: true
+    source("renv/activate.R")
+    ```
+
+-   This is run every time R starts, and does some management of the library paths to make sure when you call `install.packges("package")` or `library(package)` it uses the private library
+-   An `renv.lock` file (really just a text file) is created to store the names and versions of the packages. This is the "lockfile" mentioned above.
+
+## `renv.lock`
+
+```json         
+{
+  "R": {
+    "Version": "4.3.0",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cran.rstudio.com"
+      }
+    ]
+  },
+  "Packages": {
+    "R6": {
+      "Package": "R6",
+      "Version": "2.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "470851b6d5d0ac559e9d01bb352b4021"
+    },
+    base64enc": {
+      "Package": "base64enc",
+      "Version": "0.1-3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "543776ae6848fde2f48ff3816d0628bc"
+    },
+```
+
+## Using `{renv}` later
+
+- Restore an environment:
+  ```{r}
+  #| eval: false
+  #| echo: true
+  renv::restore()
+  ```
+
+- Install new packages:
+  ```{r}
+  #| eval: false
+  #| echo: true
+  install.packages("other_package")
+  ```
+
+- Update the lockfile:
+  ```{r}
+  #| eval: false
+  #| echo: true
+  renv::snapshot()
+  ```
+
+## Collaboration with `{renv}`
+
+-   Share the project's `renv.lock` file with collaborators to ensure consistent environments
+    -  With `git`, you’ll need to commit `renv.lock`, `.Rprofile`, `renv/settings.json` and `renv/activate.R`. This is particularly simple because `{renv}` will create a `.gitignore` for you, and you can just commit all suggested files.
+-   When they run `renv::restore()`, the correct versions of the packages will be installed on their computer
+    ```{r}
+    #| eval: false
+    #| echo: true
+    renv::restore()
+    ```
+
+## Other helpful functions
+
+- Remove packages that are no longer used:
+  ```{r}
+  #| eval: false
+  #| echo: true
+  renv::clean()
+  ```
+
+- Check the status of the project library with respect to the lockfile:
+  ```{r}
+  #| eval: false
+  #| echo: true
+  renv::status()
+  ```
+
+  This will tell you to `renv::snapshot()` to add packages you've installed but haven't snapshotted, or `renv::restore()` if you're missing packages you need but which aren't installed.
+
+- Update packages which are out-of-date (only checked from their original source):
+  ```{r}
+  #| eval: false
+  #| echo: true
+  renv::update()
+  ```
+
+## Package Development with `{renv}`
+
+- Install all of your package's dependencies as per `DESCRIPTION` file:
+  ```{r}
+  #| eval: false
+  #| echo: true
+  renv::install()
+  ```
+
+- If you need to test your package with other development versions, use `Remotes` field and a project specific library:
+  ```yaml
+  Remotes:
+    r-lib/ggplot2
+  ``` 
+- In order to avoid `R CMD build` performance hit, by default, `{renv}` will create a package project specific library *outside* of the directory.
+  - Exact location may be controlled with environment variable `RENV_PATHS_LIBRARY_ROOT`
+
+## Package Development with `{renv}` (cont'd)
+
+- Continuous integration (CI) is well supported
+  - Basic idea is to `renv::restore()` the package environment on the CI machine, and use provided cache as best as possible
+  - Example: GitHub Actions (details are given [here](https://rstudio.github.io/renv/articles/ci.html#github-actions))
+    ```yaml
+    steps:
+    - uses: actions/checkout@v3
+    - uses: r-lib/actions/setup-r@v2
+    - uses: r-lib/actions/setup-renv@v2
+    ```
+- Ignore the `{renv}` lockfile and the package folder when building the tarball for CRAN submission
+  - `{renv}` should automatically edit `.Rbuildignore` accordingly, just good to double check
+
+## Conclusion
+
+`{renv}` benefits are
+**isolation**, **reproducibility**, and **portability**.
+
+Getting started with `{renv}`:
+
+1.  Initialize a project using `renv::init()`.
+2.  Install packages and then save with `renv::snapshot()`.
+3.  Restore later or elsewhere with `renv::restore()`.
+
+# Exercise
+
+## Exercise 1: Create a Quarto Project with `{renv}`
+
+1. Create a new Quarto project via File > New Project > New Directory > Quarto Project in RStudio.
+1. Enable the use of `{renv}`
+1. Create Project
+1. Write a short introduction and perform a simple analysis
+1. Render the document
+
+## Exercise 2: Use `{renv}` for dependencies
+
+1. Add any additional R packages your analysis needs:
+   ```{r}
+   #| eval: false
+   #| echo: true
+   install.packages("RQuantLib") # Example non-standard package
+   ```
+1. Check `renv::status()` and the lockfile - did anything change?
+1. Now use the additional R package in your Quarto document:
+   ```{r}
+   #| eval: false
+   #| echo: true
+   library("RQuantLib")
+   ```
+1. Check the status again and record the state with `renv::snapshot()`
+1. Close the project and confirm that the package is not available anymore
+1. Open the project and confirm that the package is available
+
+# License Information
+
+- Creators (initial authors): 
+  Louisa Smith [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/louisahsmith/), see her course website [R Bootcamp (EPI590R) from Northeastern University](https://epi590r-2023.louisahsmith.com/about)
+- In the current version, changes were done by (later author):
+  Daniel Sabanes Bove [`r fontawesome::fa("github")`](https://github.com/danielinteractive/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/)
+{{< include _license_footer.qmd >}}

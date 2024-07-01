@@ -1,0 +1,213 @@
+---
+title: "8 Code Optimization"
+description: "Best Practices for Optimizing Code<br/>[Photo by Chris Peeters on pexels.com]{.copyright}"
+image: thumbnails/speed.jpg
+bibliography: references.bib
+---
+
+## Acknowledgments
+
+This section is adapted from slides by Lukas A. Widmer and Michael Mayer, which they prepared and released under the CC BY 4.0 license, see their course [Go fastR – how to make R code fast(er) and run it on high performance compute (HPC) clusters](https://luwidmer.github.io/fastR-website/materials.html).
+
+Thanks a lot Lukas and Michael!
+
+# Introduction
+
+## A Word of Wisdom
+
+![](screenshots/2024-03-17-22-24-36.png)
+
+[@knuth1974structured, p. 268]
+
+## Setting the right priorities
+
+1. The code needs to be correct, i.e. calculate correct results as expected. → **Tests**, **Debugging**
+1. If it is correct, but too slow, then find out which calculations and why they are too slow. → **Profiling**
+1. Once you identified the slow parts, optimize those. 
+→ **Code optimization**
+1. If executing the code on your laptop is still too slow → consider running it instead on a high performance cluster (**HPC**), see slides from Lukas and Michael
+
+## Tests: see previous [section](04_quality.qmd)
+
+![](resources/testing.png)
+
+(modified from @xkcd, [No. 303](https://xkcd.com/303/))
+
+## Debugging: A few pointers
+
+1. Post-hoc `traceback()` after code fails, to show the call stack and see how the error came about.
+1. Setting `debug(myfun)` for the problematic function `myfun` and then run the code to step through its execution.
+1. Inject `browser()` calls into problematic code to add "breakpoints" for interactive execution and inspection.
+1. Setting `options(error = recover)` and then running the problematic code allows you to jump into the call stack and inspect. (Undo with `options(error = NULL)`)
+
+## Debugging: Some RStudio specifics
+
+Let's have a look at RStudio IDE specific details. 
+
+- The "Debug" menu can be useful to explore the options.
+- Editor breakpoints: Can add with click to the left of line number and gives "red dot".
+- Click on "Source" to run the script and enter debug mode.
+- "Debug" > "On Error" > "Break in Code" again lets you jump into the code on error.
+- Debugging in Rmarkdown documents can be tricky, either proceed chunk by chunk, or try `sink()`
+
+See [Posit website](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE) for details.
+
+# Profiling
+
+## Profiling: Definition
+
+> In software engineering, profiling ("program profiling", "software profiling") is a form of dynamic program analysis that measures, for example, the space (memory) or time complexity of a program, the usage of particular instructions, or the frequency and duration of function calls. Most commonly, profiling information serves to aid program optimization, and more specifically, performance engineering.
+
+([Wikipedia](https://en.wikipedia.org/wiki/Profiling_(computer_programming)))
+
+## Profiling: Example code
+
+```{r}
+#| eval: FALSE
+#| echo: TRUE
+f <- function() {
+    profvis::pause(0.1)
+    for (i in seq_len(3)) {
+        g()
+    }
+}
+g <- function() {
+    profvis::pause(0.1)
+}
+```
+
+## Profiling: Let's identify the bottlenecks!
+
+In R there are a couple of basic functions for profiling:
+
+- `system.time()`
+- `Rprof`: 
+  1. start with `Rprof()`
+  1. execute the code
+  1. stop with `Rprof(NULL)`
+  1. summarize with `summaryRprof()`
+
+See e.g. @peng2016, chapter 19, for details.
+
+## Profiling: Classic `Rprof` output
+
+```{r}
+#| eval: FALSE
+#| echo: TRUE
+Rprof()
+f()
+Rprof(NULL)
+summaryRprof()
+```
+
+## Profiling: Getting visual
+
+We can use the more modern [`profvis`](https://rstudio.github.io/profvis) R package for visualizing where R spends its time during code execution.
+
+```{r}
+#| eval: FALSE
+#| echo: TRUE
+library(profvis)
+source("profexample.R") # Such that the flame graph includes code lines.
+prof <- profvis({
+    f()
+})
+print(prof)
+```
+
+## Profiling: `profvis` output
+
+![](screenshots/2024-03-24-21-51-38.png)
+
+# Code optimization
+
+## Code optimization: Explore alternatives
+
+- If the slow function is from another package, search for a faster one
+- Runtime complexity (runtime as a function of data size) of different algorithms can be
+wildly different - some work well on small data but take forever on large data
+- Few examples:
+  - For wrangling data frames, consider [`duckplyr`](https://duckdblabs.github.io/duckplyr/) and [`polars`](https://rpolars.github.io/) as alternatives to [`dplyr`](https://dplyr.tidyverse.org/)
+  - To read and write CSV data, consider [`vroom`](https://vroom.r-lib.org/) instead of base R
+  - To read and write objects from and to disk, consider [`qs`](https://cran.r-project.org/package=qs) instead of base R `readRDS`, `saveRDS`
+
+## Code optimization: DRY on data frames
+
+- Remember: DRY (Don't Repeat Yourself)
+- Data frames are expensive, i.e. take a lot of time.
+- Some examples:
+  - Only create data frames, if really necessary. 
+    - Bad: `if(nrow(filter(x, condition)) > 0)`
+    - Good: `if(any(condition))`
+  - Assemble a data frame only once, not iteratively.
+  - When subsetting a data frame and working with a column, first extract the column and then subset.
+
+## Code optimization: Reuse, don't copy
+
+Avoid making unintended copies of objects.
+
+```{r}
+#| eval: FALSE
+#| echo: TRUE
+# Bad:
+result <- c()
+for (i in 1:1000) result <- c(result, fun(i))
+# Good:
+result <- numeric(1000)
+for (i in 1:1000) result[i] <- fun(i)
+# Better:
+result <- sapply(seq_len(1000), fun)
+```
+
+Other examples:
+
+- Create a `data.frame` once from complete column vectors, rather than `rbind()` it iteratively.
+- Subsetting a matrix or `data.frame` will create a copy, so use it consciously or better work with columns.
+
+## Code optimization: Vectorize where possible
+
+- Avoiding for loops does not help much anymore.
+- However, using specialized vectorized functions (implemented in compiled code) helps:
+  - Base R: `rowSums()`, `colSums()`, `rowMeans()`, `colMeans()`
+  - [`matrixStats`](https://github.com/HenrikBengtsson/matrixStats): many! `anyMissing()`, `colQuantiles()`, `rowMax()`, etc.
+  - [`collapse`](https://sebkrantz.github.io/collapse/): `fmean()`, `TRA()`, `GRP()`, ...
+
+## Code optimization: Still too slow?
+
+> "R is a language optimized for human performance, not computer performance"
+
+(Hadley Wickham, New York R Conference, 2018)
+
+## Code optimization: Shift to C++ with `Rcpp`
+
+Writing and using C++ code in your R package is not easy.
+
+But it is not too difficult with [`Rcpp`](https://dirk.eddelbuettel.com/code/rcpp.html) by @Eddelbuettel2011.
+
+- Starting point: `Rcpp::Rcpp.package.skeleton()` 
+- Use [`RcppArmadillo`](https://dirk.eddelbuettel.com/code/rcpp.armadillo.html) for linear algebra
+- Hadley Wickham's chapter [Rewriting R code in C++](https://adv-r.hadley.nz/rcpp.html)
+
+Note: Adding C++ code to your package will in many cases increase the maintenance effort significantly.
+
+## References
+
+::: {#refs}
+:::
+
+# Exercise
+
+- Read [`bootstrap.R`](examples/optimization/bootstrap.R) and understand what is going on.
+- Run [`profbootstrap.R`](examples/optimization/profbootstrap.R) to see where most of the time is spent - where?
+- In a second version of the function, `impl_2`, only update vectors inside the loop and then create a `tibble` once at the end.
+- In a third version `impl_3` only subset the column instead of the whole `data.frame`. How much faster does it get?
+- In a fourth version `impl_4` use the [`boot`](https://cran.r-project.org/package=boot) package.
+- Homework: Try to come up with a fifth version `impl_5` that uses `Rcpp`. Was it worth the effort?
+  
+# License Information
+
+- Creators (initial authors): 
+  Lukas A. Widmer and Michael Mayer, see their course [Go fastR – how to make R code fast(er) and run it on high performance compute (HPC) clusters](https://luwidmer.github.io/fastR-website/materials.html)
+- In the current version, changes were done by (later author):
+  Daniel Sabanes Bove [`r fontawesome::fa("github")`](https://github.com/danielinteractive/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/)
+{{< include _license_footer.qmd >}}

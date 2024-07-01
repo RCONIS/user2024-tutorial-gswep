@@ -1,0 +1,238 @@
+---
+title: "1 Introduction"
+description: "Introduction and outline of program"
+image: thumbnails/hello.jpg
+author: Daniel Sabanés Bové and Friedrich Pahlke
+---
+
+## Disclaimer
+
+*Any opinions expressed in this presentation and on the following slides are solely those of the presenter and not necessarily those of their employers.*
+
+## Daniel
+
+::: columns
+::: {.column width="30%"}
+![](resources/daniel.jpg)
+:::
+
+::: {.column width="70%"}
+-   Ph.D. in Statistics from University of Zurich, Bayesian Model Selection
+-   Biostatistician at Roche for 5 years, Data Scientist at Google for 2 years, Statistical Software Engineer at Roche for the last 4 years
+-   Co-founder of [inferential.bio](https://inferential.bio) and [RCONIS](https://rconis.com)
+-   Multiple R packages on CRAN and Bioconductor, co-wrote book on Likelihood and Bayesian Inference, chair of `openstatsware`
+-   Feel free to connect
+    [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/)
+    [`r fontawesome::fa("github")`](https://github.com/danielinteractive)
+    [`r fontawesome::fa("globe")`](https://rconis.com)
+:::
+:::
+
+## Friedrich
+
+::: columns
+::: {.column width="70%"}
+-   Since 2008 self-employed consultant for computer science and data science as well as biostatistics
+-   Co-founder and CEO of RPACT, a company developing the formally validated R package [rpact](https://cran.r-project.org/package=rpact "rpact: Confirmatory Adaptive Clinical Trial Design and Analysis") with 28 releases on CRAN since 2018
+-   Co-founder of [RCONIS](https://rconis.com)
+-   Trained software architect; R programmer since 2004; R Shiny developer since 2019
+-   Feel free to connect at [`r fontawesome::fa("linkedin")` LinkedIn](http://www.linkedin.com/in/pahlke "Friedrich Pahlke at LinkedIn") or [`r fontawesome::fa("github")` Github](https://github.com/fpahlke "Friedrich Pahlke at GitHub")
+:::
+
+::: {.column width="30%"}
+![](resources/friedrich.jpg)
+:::
+:::
+
+## `openstatsware`
+
+::: columns
+::: {.column width="70%"}
+- [openstatsware.org](https://openstatsware.org)
+- Since: 19 August 2022 - almost 2 years now!
+- Where: American Statistical Association (ASA) Biopharmaceutical Section (BIOP), European Federation of Statisticians in the Pharmaceutical Industry (EFSPI)
+- Who: Currently more than 50 statisticians from more than 30 organizations
+- What: Engineer packages and spread best practices
+:::
+
+::: {.column width="30%"}
+![](https://raw.githubusercontent.com/RConsortium/asa-biop-swe-wg/main/sticker/openstatsware-hex.svg){height="300"}
+:::
+:::
+
+## What you will learn here
+
+-   Understand the basic structure of an R package
+-   Create your own R `r fontawesome::fa("cube")`
+-   Learn about & apply professional `r fontawesome::fa("cube")` development workflow
+-   Learn & apply fundamentals of quality control for R `r fontawesome::fa("cube")`
+-   Get crash-course in version control and modern collaboration techniques on GitHub.com
+-   Learn how to make an R `r fontawesome::fa("cube")` available to others
+-   Optimize your R code for correctness and speed
+-   Learn how to approach the design and modularity of Shiny apps and how to test them
+
+## Program outline
+
+| Time               | Topic                                        |
+|--------------------|:---------------------------------------------|
+| 14:00 - 14:30 CEST | Introduction and outline                     |
+| 14:30 - 15:15 CEST | R packages, what are they? + practical       |
+| 15:15 - 15:45 CEST | Workflow for creating R packages + practical |
+| 15:45 - 16:30 CEST | Package quality + exercise                   |
+| 16:30 - 17:15 CEST | Publication + practical                      |
+| 17:15 - 17:30 CEST | Conclusion                                   |
+
+
+## House-keeping
+
+-   Course website at [RCONIS.github.io/user2024-tutorial-gswep](https://RCONIS.github.io/user2024-tutorial-gswep)
+    -   all slides
+    -   sources available at [github.com/RCONIS/user2024-tutorial-gswep](https://github.com/RCONIS/user2024-tutorial-gswep)
+    -   all materials CC-BY-SA 4.0
+-   We offer a [gitter chat channel](https://matrix.to/#/#workshop-r-swe_community:gitter.im)
+    -   use to ask your peers questions
+
+## What you will need
+
+-   [Github.com](https://github.com/) (free) account `r fontawesome::fa("github")`
+-   Local R development environment with
+    -   git `r fontawesome::fa("git-alt")`
+    -   Rtools/R/Rstudio IDE `r fontawesome::fa("r-project")`
+-   Install additional R packages using the [installation script](slides/download/install.R)
+-   Curiosity `r emoji::emoji("curious")`
+-   Positive attitude `r emoji::emoji("smile")`
+
+## Speed intros and what would you like to learn?
+
+- Name? `r emoji::emoji("face")`
+- Organization? `r emoji::emoji("office")`
+- Motivation for this workshop/ what would you like to learn `r emoji::emoji("brain")`
+- Favorite food? `r emoji::emoji("food")`
+- Favorite music? `r emoji::emoji("music")`
+
+## What do we mean by GSWEP4R\*?
+
+::: aside
+\* Good Software Engineering Practice for R
+:::
+
+-   Applying concept of "Good XYZ Practice" to SWE with R
+-   Improve **quality** and **longevity** of R code/packages  
+-   Not a universal standard; we share our perspectives
+-   Collection of best practices
+-   Do not reinvent the wheel: learn from the community
+
+## Why care about GSWEP4R?
+
+-   R is one of the most successfull statistical programming languages
+-   R is a powerful yet complex *ecosystem*
+    -   Core component: R packages
+    -   Mature analysts: users & contributors
+    -   Deep understanding crucial, even to just assess quality
+-   Analyses increasingly require complex scripts/programs
+-   The concepts are applicable to other languages, too (Python, Julia, etc.)
+
+## Start small - from script to package
+
+1.  Encapsulate behavior (functions)
+2.  Avoid global state/variables
+3.  Adopt consistent coding style
+4.  Document well
+5.  Add test cases
+6.  Refactor and optimize code
+7.  Version your code
+8.  Share as 'bundle'
+
+$\leadsto$ R package
+
+## The R package ecosystem - huge success
+
+```{r cran-pkg-network, echo=FALSE}
+if (!file.exists("resources/pkg_graph.png")) { # primitive caching
+  library(tidyverse)
+  local({
+    r <- getOption("repos")
+    r["CRAN"] <- "https://cloud.r-project.org"
+    options(repos = r)
+  })
+  # get pkg cumulative downloads from last month
+  db <- tools::CRAN_package_db()
+  tbl_dl_ <- db %>%
+      group_by(chunk = row_number() %/% 100) %>% # chunk to comply with API limit
+      nest() %>%
+      mutate(
+          res = purrr::map2(
+              data, chunk,
+              function(data, id) {
+                  cranlogs::cran_downloads(data$Package, when = "last-month") %>%
+                      group_by(package) %>%
+                      summarize(count = sum(count))
+              }
+          )
+      ) %>%
+      ungroup() %>%
+      select(res) %>%
+      unnest(res) %>%
+      distinct()
+  tbl_dl <- filter(tbl_dl_, count >= 10000L, !is.na(count))
+  tbl_deps <- tools::package_dependencies(
+        tbl_dl$package,
+        which = c("Imports", "Depends", "LinkingTo")
+      ) %>%
+      enframe(name = "from", value = "to") %>%
+      unnest(to)
+  grph_deps <- tidygraph::as_tbl_graph(tbl_deps) %>%
+    left_join(
+      tbl_dl_,
+      by = c(name = "package")
+    ) %>%
+    filter(!is.na(count)) # remove base packages
+  plt <- ggraph::ggraph(grph_deps, layout = "linear", circular = TRUE) +
+      ggraph::geom_edge_link(alpha = .033) +
+      ggraph::geom_node_label(
+          aes(label = if_else(count > quantile(count, 0.975, na.rm = TRUE), name, NA_character_)),
+          repel = TRUE
+      ) +
+      ggraph::theme_graph()
+  ggsave("resources/pkg_graph.png", plot = plt, width = 8, height = 8/1.61, dpi = 300)
+}
+knitr::include_graphics("resources/pkg_graph.png")
+```
+
+##  {background-iframe="https://pharmaverse.org/" background-interactive="true"}
+
+## Pharma perspective: GxP + R `r fontawesome::fa("cube")` = `r fontawesome::fa("heart")`
+
+-   Core infrastructure packages only through industry
+-   Quality, burden sharing: open-source [pharmaverse](https://pharmaverse.org/) and [openstatsware](https://openstatsware.org)
+-   Open methodological packages can de-risk innovative methods
+-   R packages make (statistical/methodological) code
+    -   testable (with documented evidence thereof, [CFR Part 11](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11))
+    -   reusable
+    -   shareable
+    -   easier to document
+
+# Question, Comments?
+
+# License information
+
+- Creators (initial authors): 
+  Daniel Sabanes Bove 
+  [`r fontawesome::fa("github")`](https://github.com/danielinteractive/) 
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/),
+  Friedrich Pahlke [`r fontawesome::fa("github")`](https://github.com/fpahlke/) 
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/pahlke/),
+  Kevin Kunzmann 
+  [`r fontawesome::fa("github")`](https://github.com/kkmann/) 
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/kevin-kunzmann-6486a11bb/),
+  Andrew Bean
+  [`r fontawesome::fa("github")`](https://github.com/andrew-bean)
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/andrew-bean-83539116/),
+  Doug Kelkhoff
+  [`r fontawesome::fa("github")`](https://github.com/dgkf)
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/doug-kelkhoff/),
+  Philippe Boileau
+  [`r fontawesome::fa("github")`](https://github.com/philboileau)
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/philippe-boileau-773270205/)
+  [`r fontawesome::fa("globe")`](https://pboileau.ca/)
+{{< include _license_footer.qmd >}}
