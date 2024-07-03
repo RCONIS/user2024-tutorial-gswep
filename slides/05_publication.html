@@ -9,11 +9,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.557">
+  <meta name="generator" content="quarto-1.5.53">
 
-  <meta name="author" content="Daniel Sabanés Bové">
   <meta name="dcterms.date" content="2024-07-08">
-  <title>GSWEP4R Tutorial - 5 Version Control &amp; Collaboration</title>
+  <title>GSWEP4R Tutorial – 5 Publication</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -322,465 +386,318 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" data-background-image="resources/RCONIS.png" data-background-opacity="1" data-background-position="20px 20px" data-background-size="200px 200px" class="quarto-title-block center">
-  <h1 class="title">5 Version Control &amp; Collaboration</h1>
+  <h1 class="title">5 Publication</h1>
   <p class="subtitle">Tutorial: Good Software Engineering Practice for R Packages</p>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Daniel Sabanés Bové 
-</div>
-</div>
 </div>
 
   <p class="date">July 8, 2024</p>
 </section>
-<section id="disclaimer" class="slide level2">
-<h2>Disclaimer</h2>
-<p><br><br><br></p>
-<p><em>Any opinions expressed in this presentation and on the following slides are solely those of the presenter and not necessarily those of their respective employer or company.</em></p>
-</section>
-<section id="section" class="slide level2" data-background-image="resources/scratch.jpg">
-<h2></h2>
-<div class="absolute" style="left: 0px; bottom: 100px; right: 500px; ">
-<ul>
-<li>Overview, demo, practical</li>
-<li>Can only scratch surface</li>
-<li>More resources on <a href="https://openpharma.github.io/workshop-r-swe-mtl/#optional-reading-list">website</a></li>
-</ul>
-</div>
-<div class="footer">
-<p>Photo by <a href="https://unsplash.com/@rhubbardstockfootage?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Rich @ rhubbardstockfootage</a> on <a href="https://unsplash.com/photos/dEATKItQazc?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-</div>
-</section>
-<section id="trade-offs-in-code-development" class="slide level2">
-<h2>Trade-offs in code development</h2>
-<p><br></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="working-alone">Working alone</h3>
-<ul>
-<li>no coordination overhead</li>
-<li>no review</li>
-<li>lack of diversity</li>
-<li>can slack on documentation</li>
-<li>fragile long-term maintenance</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<h3 id="working-in-a-team">Working in a team</h3>
-<ul>
-<li>coordination overhead</li>
-<li>mutual review of code</li>
-<li>different approaches</li>
-<li>forced to document</li>
-<li>more robust long-term maintenance</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="section-1" class="slide level2" data-background-image="resources/complexity.jpg">
-<h2></h2>
-<div class="absolute" style="top: 250px; left: 625px; ">
-<p><strong>Key issue:<br> Manage complexity over time or between people</strong></p>
-</div>
-<div class="footer">
-<p>Photo from <a href="https://unsplash.com/@timmossholder?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Tim Mossholder</a> on <a href="https://unsplash.com/de/fotos/FwzhysPCQZc?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-</div>
-</section>
-<section id="version-control-systems-vcs" class="slide level2">
-<h2>Version control systems (VCS)</h2>
-<ul>
-<li>Manage different versions of a piece of work</li>
-<li>Compare and merge diverged versions <strong>effectively</strong><sup>1</sup></li>
-</ul>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[Daniel v1] --&gt; B[Daniel v2]
-  B --&gt; C[Daniel v3]
-  B --&gt; D[Lukas v1]
-  D --&gt; E[Lukas + Daniel v4]
-  C --&gt; E
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Code is complex system <span class="math inline">\(\leadsto\)</span> ideal application of VCS</li>
-<li>Compounded by multiple people ‘fiddling’ with it!</li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Merging parallel edits is not simple (try it in MS Word 365)</p></li></ol></aside></section>
 <section>
-<section id="git-basics" class="title-slide slide level1 center">
-<h1>git basics</h1>
+<section id="website-with-pkgdown" class="title-slide slide level1 center">
+<h1>Website with <code>pkgdown</code></h1>
 
 </section>
-<section id="enter-git-the-latin-of-data-science" class="slide level2">
-<h2>Enter git <svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg> the ‘Latin of data science’</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="resources/linus.jpg"></p>
-</div><div class="column" style="width:70%;">
+<section id="setup-of-pkgdown" class="slide level2">
+<h2>Setup of <code>pkgdown</code></h2>
 <ul>
-<li>Author Linus Torvalds, for work on Linux kernel</li>
-<li>Essentially a database with snapshots of a monitored ‘repository’ (directory)</li>
-<li>Optimized to compute line-based changes</li>
-<li>Integrated in RStudio IDE, Visual Studio Code</li>
-<li>De facto standard not just in the R world</li>
-<li>Alternatives: mercurial, SVN, …</li>
+<li><code>pkgdown</code> makes it quick and easy to build a website for your package</li>
+<li>After installing <code>pkgdown</code>, run <code>usethis::use_pkgdown()</code> to get started</li>
+<li>Main configuration happens in <code>_pkgdown.yml</code> file</li>
+<li>Many customizations can be applied, but bulk of work during development is updating the <code>reference</code> section with names of <code>.Rd</code> files</li>
 </ul>
-</div>
-</div>
-<div class="footer">
-<p><a href="https://commons.wikimedia.org/w/index.php?curid=108824226">Photo</a> by Lf Asia &amp; the Archive Team CC BY 3.0</p>
-</div>
 </section>
-<section id="stage-commit" class="slide level2">
-<h2>Stage &amp; commit</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="resources/commit.jpg"></p>
-</div><div class="column" style="width:70%;">
-<div class="cell" data-reveal="true" data-fig-width="6" data-fig-height="2" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">gitGraph
-   commit
-   commit
-   commit
-   commit
-   commit
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ol type="1">
-<li>‘Stage’ changes for inspection
+<section id="example-_pkgdown.yml-file" class="slide level2">
+<h2>Example <code>_pkgdown.yml</code> File</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="pp">---</span></span>
+<span id="cb1-2"><a></a><span class="fu">url</span><span class="kw">:</span><span class="at"> https://openpharma.github.io/mmrm/latest-tag</span></span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="fu">template</span><span class="kw">:</span></span>
+<span id="cb1-5"><a></a><span class="at">  </span><span class="fu">bootstrap</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
+<span id="cb1-6"><a></a><span class="at">  </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-7"><a></a><span class="at">    </span><span class="fu">ganalytics</span><span class="kw">:</span><span class="at"> UA-125641273-1</span></span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb1-10"><a></a><span class="at">  </span><span class="fu">right</span><span class="kw">:</span></span>
+<span id="cb1-11"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> fa-github</span></span>
+<span id="cb1-12"><a></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://github.com/openpharma/mmrm</span></span>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a><span class="fu">reference</span><span class="kw">:</span></span>
+<span id="cb1-15"><a></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">title</span><span class="kw">:</span><span class="at"> Package</span></span>
+<span id="cb1-16"><a></a><span class="at">    </span><span class="fu">contents</span><span class="kw">:</span></span>
+<span id="cb1-17"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> mmrm-package</span></span>
+<span id="cb1-18"><a></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">title</span><span class="kw">:</span><span class="at"> Functions</span></span>
+<span id="cb1-19"><a></a><span class="at">    </span><span class="fu">contents</span><span class="kw">:</span></span>
+<span id="cb1-20"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> mmrm</span></span>
+<span id="cb1-21"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> fit_mmrm</span></span>
+<span id="cb1-22"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> mmrm_control</span></span>
+<span id="cb1-23"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> fit_single_optimizer</span></span>
+<span id="cb1-24"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> refit_multiple_optimizers</span></span>
+<span id="cb1-25"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> df_1d</span></span>
+<span id="cb1-26"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> df_md</span></span>
+<span id="cb1-27"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> component</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section" class="slide level2" data-background-iframe="https://openpharma.github.io/mmrm/latest-tag/reference/index.html" data-background-interactive="true">
+<h2></h2>
+</section>
+<section id="publication-as-github-page" class="slide level2">
+<h2>Publication as GitHub Page</h2>
 <ul>
-<li>allows to inspect propose changes before locking them in</li>
+<li>It’s helpful for users to read the website online</li>
+<li>GitHub is very helpful here because:
+<ul>
+<li>A separate branch, <code>gh-pages</code>, stores the rendered website</li>
+<li>GitHub actions automatically render the website when the <code>main</code> branch is updated</li>
 </ul></li>
-<li>Permanently ‘commit’ changes to git</li>
-</ol>
-<p><span class="math inline">\(\leadsto\)</span> Chain of versions with incremental changes</p>
-</div>
-</div>
-<div class="footer">
-<p>Photo by <a href="https://unsplash.com/@feliciamontenegro?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Felicia Montenegro</a> on <a href="https://unsplash.com/photos/VKnWrMnxahg?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-</div>
-</section>
-<section id="line-based-differences---the-diff" class="slide level2">
-<h2>Line-based differences - the ‘diff’</h2>
-
-<img data-src="resources/diff-example.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><ul>
-<li>Changes in git are line-based</li>
-<li>Additions (green) &amp; deletions (red) between commits</li>
-</ul>
-</section>
-<section id="going-back-in-time" class="slide level2">
-<h2>Going back in time</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="resources/delorean.jpg"></p>
-</div><div class="column" style="width:70%;">
+<li>To get started, use <code>usethis::use_pkgdown_github_pages()</code>
 <ul>
-<li>Every commit has unique hash value</li>
-<li>Can ‘checkout’ old commit (browse history)</li>
-</ul>
-<pre><code>git checkout [commit hash to browse]</code></pre>
-<ul>
-<li>Can ‘reset’ changes</li>
-</ul>
-<pre><code>git reset --hard [commit hash to reset to]</code></pre>
-<ul>
-<li>Removes need for <code>my-file_final_v2_2019.R</code></li>
-<li>Time travelling has its dangers…<sup>1</sup></li>
-</ul>
-</div>
-</div>
-<div class="footer">
-<p>Photo by <a href="https://unsplash.com/@milatovar?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Mila Tovar</a> on <a href="https://unsplash.com/photos/nZ6Gg6zgfbE?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Never change published history!</p></li></ol></aside></section>
-<section id="branching" class="slide level2">
-<h2>Branching</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="resources/branch.jpg"></p>
-</div><div class="column" style="width:70%;">
-<div class="cell" data-reveal="true" data-fig-width="6" data-fig-height="2" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">gitGraph
-   commit
-   commit
-   branch feature
-   checkout feature
-   commit
-   commit
-   checkout main
-   commit
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Variations of repository: ‘branches’</li>
-</ul>
-<pre><code>git checkout -b [my new branch]</code></pre>
-<ul>
-<li>Quick switching between branches</li>
-</ul>
-<pre><code>git checkout [branch name]</code></pre>
-</div>
-</div>
-<div class="footer">
-<p>Photo by <a href="https://unsplash.com/@milatovar?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Mila Tovar</a> on <a href="https://unsplash.com/photos/nZ6Gg6zgfbE?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-</div>
-</section>
-<section id="merging-two-branches" class="slide level2">
-<h2>‘Merging’ two branches</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="resources/merge.jpg"></p>
-</div><div class="column" style="width:70%;">
-<div class="cell" data-reveal="true" data-fig-width="6" data-fig-height="2" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">gitGraph
-   commit
-   commit
-   branch feature
-   checkout feature
-   commit
-   commit
-   checkout main
-   commit
-   merge feature
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Consolidate diverged ‘branches’</li>
-<li>Usually merged automergically</li>
-<li>Conflicting changes <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9c0 .4 0 .7 0 1.1v64c0 26.5 21.5 48 48 48h48V464c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64V464c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48V400c0-.4 0-.7 0-1.1zM96 256a64 64 0 1 1 128 0A64 64 0 1 1 96 256zm256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg></li>
-<li>Line edited in source/target branch - keep which?</li>
-<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line">Resolving merge conflicts</a> beyond today’s scope</li>
-</ul>
-</div>
-</div>
-<div class="footer">
-<p>Photo by <a href="https://unsplash.com/@maxlarochelle?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Max LaRochelle</a> on <a href="https://unsplash.com/photos/c-vWdiICscA?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-</div>
-</section>
-<section id="example-of-gitflow" class="slide level2">
-<h2>Example of ‘gitflow’</h2>
-<div class="cell" data-reveal="true" data-fig-width="8" data-fig-height="4" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">gitGraph
-   commit tag: "v0.0.1"
-   commit
-   branch feature-1
-   checkout feature-1
-   commit
-   commit
-   checkout main
-   branch feature-2
-   checkout feature-2
-   commit
-   checkout feature-1
-   commit
-   checkout main
-   commit tag: "bugfix"
-   merge feature-1 tag: "v0.1.0"
-   checkout feature-2
-   commit
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul>
-<li>‘gitflow’: specific workflow for git repositories</li>
-<li>features developed on branches, then merged into ‘main’</li>
-</ul>
-</section>
-<section id="version-control-collaboration" class="slide level2">
-<h2>Version Control &amp; Collaboration</h2>
-<ul>
-<li>git itself is command line tool for version control</li>
-<li><strong>git platforms add UI for collaboration</strong><sup>1</sup>
-<ul>
-<li><a href="https://github.com">GitHub.com</a> de facto standard in R (one alternative is e.g.&nbsp;<a href="https://gitlab.com/">GitLab.com</a>)</li>
-</ul></li>
-<li>git + GitHub
-<ul>
-<li>VCS (git)</li>
-<li>Web hosting of code (GitHub)</li>
-<li>Organisation with issues, discussions (GitHub)</li>
-<li>Automation of checks/test (GitHub)</li>
+<li>Or, manually deploy site with <code>pkgdown::deploy_to_branch()</code></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>All platforms also available on-premise for enterprise use</p></li></ol></aside></section></section>
+</section>
+<section id="section-1" class="slide level2" data-background-iframe="https://openpharma.github.io/mmrm/latest-tag/" data-background-interactive="true">
+<h2></h2>
+</section></section>
 <section>
-<section id="git-platforms" class="title-slide slide level1 center">
-<h1>git platforms</h1>
+<section id="licensing-open-sourcing-versioning" class="title-slide slide level1 center">
+<h1>Licensing, Open sourcing, Versioning</h1>
 
 </section>
-<section id="github.com" class="slide level2">
-<h2>GitHub.com <svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></h2>
+<section id="licensing" class="slide level2">
+<h2>Licensing</h2>
 <ul>
-<li>Huge number of R packages developed there:
+<li>High level categorization of licenses:
 <ul>
-<li><a href="https://github.com/tidyverse/ggplot2">ggplot2</a></li>
-<li><a href="https://github.com/tidyverse/dplyr">dplyr</a></li>
-<li><a href="https://github.com/pharmaverse">pharmaverse</a></li>
+<li>“Permissive”: Relaxed. Can be freely copied, modified, published (under the same license).</li>
+<li>“Copyleft”: Stricter. Same rights need to be preserved in derivative works.</li>
 </ul></li>
-<li>100 million developers on GitHub.com (Jan ’23), see <a href="https://github.blog/2023-01-25-100-million-developers-and-counting/">GitHub blog</a></li>
-<li>372 million repositories, 28 million public (Jan ’23)</li>
-<li>‘Facebook’ of developers / social coding</li>
-<li>Discuss problems / propose changes</li>
+<li>R itself is licensed under GPL, but packages can choose, e.g.:
+<ul>
+<li><code>usethis::use_mit_license()</code> for permissive MIT</li>
+<li><code>usethis::use_gpl_license()</code> for copyleft GPL</li>
+</ul></li>
+<li>Include minimum version, e.g.&nbsp;<code>GPL (&gt;= 3)</code></li>
 </ul>
 </section>
-<section id="branches-pull-requests" class="slide level2">
-<h2>Branches &amp; pull requests</h2>
+<section id="licensing-contd" class="slide level2">
+<h2>Licensing (cont’d)</h2>
 <ul>
-<li>Branches are a git concept</li>
-<li>Git platforms add concept of ‘pull request’ (PR)
+<li>Need to be careful here when you bundle any code from other software
 <ul>
-<li>PR is ‘suggested merge’ from branch A to B</li>
-<li>Usually from ‘feature A’ to ‘main’</li>
+<li>Care must be taken that any copyright/license statements from copied or modified code are preserved and authorship is not misrepresented</li>
 </ul></li>
-<li>Allow to <strong>preview problems before merge</strong> and <strong>discuss changes</strong></li>
-<li>Once everyone is happy, a pull request<sup>1</sup> can be merged</li>
-<li>Every PR has an associated branch, but not every branch has a PR</li>
-<li><strong>More in the demo!</strong></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>technically its associated branch</p></li></ol></aside></section>
-<section id="automating-things-with-github" class="slide level2">
-<h2>Automating things with GitHub</h2>
+<li>Are the licenses of your package and the source compatible?
 <ul>
-<li>GitHub provides
-<ul>
-<li>cloud compute</li>
-<li>scripting framework (<a href="https://github.com/features/actions">GitHub actions</a>)</li>
+<li>e.g.&nbsp;cannot copy/paste code from a GPL package and publish in an MIT package</li>
 </ul></li>
-<li>Allows task automation, e.g.
-<ul>
-<li>run unit tests</li>
-<li>build &amp; host documentation</li>
-<li>static code analysis (linting)</li>
-</ul></li>
-<li>Most important actions for R: <a href="https://github.com/r-lib/actions">github.com/r-lib/actions</a></li>
-<li>Extremely useful to enforce best-practices &amp; quality</li>
+<li><code>LICENSE</code> file optionally can contain further restrictions of the license</li>
 </ul>
 </section>
-<section id="a-typical-github-workflow" class="slide level2 scrollable">
-<h2>A typical GitHub workflow</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">sequenceDiagram
-    participant A as Daniel
-    participant GH as GitHub server
-    participant B as Lukas
-    A-&gt;&gt;A: make change locally &amp; commit to &lt;feature&gt;
-    A-&gt;&gt;GH: push commit
-    A-&gt;&gt;GH: open pull request
-    GH-&gt;&gt;GH: run automated checks
-    A-&gt;&gt;B: request review
-    B-&gt;&gt;B: review code
-    B-&gt;&gt;A: request changes
-    A-&gt;&gt;A: implement changes locally &amp; commit
-    A-&gt;&gt;GH: push commit
-    GH-&gt;&gt;GH: run automated checks
-    A-&gt;&gt;B: request review
-    B-&gt;&gt;B: review code
-    B-&gt;&gt;GH: approve changes, unblocking merge
-    A-&gt;&gt;GH: merge &lt;feature&gt; into &lt;main&gt;
-    GH-&gt;&gt;GH: run automated checks on &lt;main&gt;
-    B-&gt;&gt;GH: pull newest version of &lt;main&gt;
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="looks-awfully-complicated-why" class="slide level2">
-<h2>Looks awfully complicated, why?</h2>
+<section id="open-sourcing" class="slide level2">
+<h2>Open Sourcing</h2>
 <ul>
-<li>Efficient collaboration with novice/untrusted contributors
+<li>The easiest way to “open source” your R package is to make the GitHub repository public</li>
+<li>This allows for easy open source contributions from other developers via pull requests</li>
+<li>Please check with your organization first:
 <ul>
-<li>Maintainer: automated checks reduce review burden</li>
-<li>Contributor: no need to check manually</li>
+<li>Are they ok to publish the software?</li>
+<li>What is the appropriate copyright holder?</li>
 </ul></li>
-<li>Branching promotes asynchronous work on features</li>
-<li>Full history - can always go back</li>
-</ul>
-<p><strong><span class="math inline">\(\leadsto\)</span> making code-collaboration scalable</strong></p>
-</section>
-<section id="demo" class="slide level2">
-<h2>Demo</h2>
-<ul>
-<li>Thanks to Lukas Graz for helping me in this demo!</li>
-<li>How does a pull request work?</li>
-<li>First steps for setting up the next practical</li>
-<li>Don’t panic - steps are all documented at <br> <a href="https://github.com/kkmann/simulatr" class="uri">https://github.com/kkmann/simulatr</a></li>
+<li>Also allows bugs to be filed and to have the GitHub issues page in the package description</li>
 </ul>
 </section>
-<section id="practical---collaboration-on-github" class="slide level2">
-<h2>Practical - collaboration on GitHub</h2>
+<section id="versioning" class="slide level2">
+<h2>Versioning</h2>
 <ul>
-<li>Work in teams of ~ 3 or 4</li>
-<li>Go to <a href="https://github.com/kkmann/simulatr" class="uri">https://github.com/kkmann/simulatr</a> and read through the instructions in the README.md file</li>
-<li>The repository is a <strong>template</strong> to practice collaboration on GitHub</li>
-<li><strong>Only one member per team needs to use the template</strong> and invite the others as collaborators!</li>
-<li>Take some time to checkout the <code>README.md</code> file and set up your environment in posit cloud</li>
-<li><strong>Can you fix the errors with some pull requests?</strong></li>
-<li>The purpose of this exercise is to explore the collaboration functionality of GitHub - not to produce a perfect package ;)</li>
+<li>The <code>Version</code> field defines the package version</li>
+<li>Syntax: Three integers separated by <code>.</code> or <code>-</code>
+<ul>
+<li>Canonical form is: <code>x.y-z</code>, equivalent to <code>x.y.z</code></li>
+</ul></li>
+<li>Useful conventions of “semantic versioning”:
+<ul>
+<li><code>x</code> is major: Increment this for breaking changes</li>
+<li><code>y</code> is minor: Increment this for new features</li>
+<li><code>z</code> is patch: Increment this for bug fixes only</li>
+<li><code>x.y.z.9000</code> and count up during development</li>
+<li><code>usethis::use_version()</code> can help with this</li>
+</ul></li>
+</ul>
+<!-- Keep in mind to update the `NEWS` file for any user-visible change -->
+</section></section>
+<section>
+<section id="checks-before-release" class="title-slide slide level1 center">
+<h1>Checks Before Release</h1>
+
+</section>
+<section id="cran-the-comprehensive-r-archive-network" class="slide level2">
+<h2>CRAN (The Comprehensive R Archive Network)</h2>
+<ul>
+<li>CRAN is the central repository for R packages</li>
+<li>It has additional requirements beyond the standard package ones, which are described in the Repository Policy</li>
+<li>Submitting a package indicates agreement with the policy</li>
+<li>In particular: “The time of the volunteers is CRAN’s most precious resource, and they reserve the right to remove or modify packages on CRAN without notice or explanation (although notification will usually be given).”</li>
+</ul>
+</section>
+<section id="cran-contd" class="slide level2">
+<h2>CRAN (cont’d)</h2>
+<ul>
+<li>Only source packages can be submitted <!-- no binary executables are allowed -->
+<ul>
+<li>But <code>.rda</code> data files are allowed</li>
+</ul></li>
+<li>Need single designated maintainer (person, not mailing list)
+<ul>
+<li>Additional <code>Contact</code> field could be used</li>
+</ul></li>
+<li>Citations in author-year style, followed by <code>&lt;doi:...&gt;</code></li>
+<li>Reducing run time of tests, checks, examples, vignettes is important</li>
+<li>Need to provide cross-platform portable code: CRAN runs checks on Windows, Mac, several Linux OS</li>
+</ul>
+</section>
+<section id="cran-contd-1" class="slide level2">
+<h2>CRAN (cont’d)</h2>
+<p>❗ A CRAN submission can be punishing, painful, and nerve-racking:</p>
+<p>The first release of the <a href="https://cran.r-project.org/package=rpact">rpact</a> package took 5 weeks and 6 submission attempts; painful experiences:</p>
+<ul>
+<li>Some Linux machines may generate different random numbers than expected (despite setting a seed)</li>
+<li>Not only errors and warnings lead to the rejection of a submitted package, but also notes</li>
+<li>Your local Windows test system may be much faster than the CRAN system (e.g., 5 times)</li>
+<li>Don’t use “R Package for” in your package title</li>
+<li>The description of the package must be provided with a doi reference</li>
+</ul>
+</section>
+<section id="cran-contd-2" class="slide level2 scrollable">
+<h2>CRAN (cont’d)</h2>
+<p>Example message informing about the rejection of the last <a href="https://cran.r-project.org/package=rpact">rpact</a> submission:</p>
+<blockquote>
+<p>Dear maintainer,</p>
+<p>package rpact_3.3.2.tar.gz does not pass the incoming checks automatically, please see the following pre-tests:<br>
+Windows: <a href="https://cran.r-project.org/web/checks/check_results_rpact.html">00check.log</a> <strong>Status: OK</strong>, Debian: <a href="https://cran.r-project.org/web/checks/check_results_rpact.html">00check.log</a> <strong>Status: OK</strong></p>
+<p>Please fix all problems and resubmit a fixed version via the webform.</p>
+<p>Best regards,<br>
+CRAN teams’ auto-check service</p>
+<p>r-devel-windows-x86_64 Check: Result: NA, Maintainer: ‘Friedrich Pahlke’<br>
+r-devel-windows-x86_64 Check: Overall checktime, Result: NOTE, Overall checktime 12 min &gt; 10 min<br>
+r-devel-linux-x86_64-debian-gcc Check: Result: Note_to_CRAN_maintainers Maintainer: ‘Friedrich Pahlke’</p>
+</blockquote>
+</section>
+<section id="r-hub-to-the-rescue" class="slide level2">
+<h2>R-Hub to the Rescue</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="resources/r-hub.png"></p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li>Free <code>R CMD check</code> runs on <a href="https://docs.r-hub.io/#which-platform">different operating systems</a> before submitting to CRAN</li>
+<li>Supported by the R consortium</li>
+<li>Typically used via the <a href="https://builder.r-hub.io/">website</a></li>
+<li>There is also an R API: <code>rhub::check()</code> is comfortable
+<ul>
+<li>Note: New API with R-hub v2 since a few weeks (<a href="https://r-hub.github.io/rhub/articles/rhubv2.html">details</a>)</li>
+</ul></li>
+</ul>
+</div></div>
+</section></section>
+<section>
+<section id="github" class="title-slide slide level1 center">
+<h1>GitHub</h1>
+
+</section>
+<section id="tags" class="slide level2">
+<h2>Tags</h2>
+<ul>
+<li>Tags are a feature of Git, i.e., not specific to GitHub</li>
+<li>Git can tag specific points in the code history as being important</li>
+<li>Typically, for each release, create a tag <code>vx.y.z</code></li>
+<li>The value here is that users can later check out the package in the state of this release version
+<ul>
+<li>Download in R: <code>remotes::install_github("org/package", ref = "vx.y.z")</code></li>
+<li>Comparison of versions are also possible, etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="tags-example" class="slide level2">
+<h2>Tags: Example</h2>
+
+<img data-src="resources/tags.png" class="r-stretch"></section>
+<section id="releases" class="slide level2">
+<h2>Releases</h2>
+<ul>
+<li>Based on Git tags, and a feature of GitHub</li>
+<li>Are “deployable software packages to make them available for a wider audience to download and use”</li>
+<li>Contain release notes and links to the binary package files for download
+<ul>
+<li>However, for R packages these <code>tar.gz</code> package files are rarely used directly</li>
+</ul></li>
+</ul>
+</section>
+<section id="releases-example" class="slide level2">
+<h2>Releases: Example</h2>
+
+<img data-src="resources/releases.png" class="r-stretch"></section></section>
+<section>
+<section id="bioconductor" class="title-slide slide level1 center">
+<h1>Bioconductor</h1>
+
+</section>
+<section id="a-note-on-bioconductor" class="slide level2">
+<h2>A Note on Bioconductor</h2>
+<ul>
+<li>The <a href="https://www.bioconductor.org/">Bioconductor</a> project develops, supports, and disseminates open source software for the analysis of biological assays</li>
+<li>Like CRAN, Bioconductor has additional package requirements</li>
+<li>Packages are peer reviewed by community members</li>
+<li>New packages and updates to existing packages are released semi-annually</li>
+<li>Software is expected to be interoperable with other Bioconductor packages through the re-use of common data structures and infrastructure</li>
 </ul>
 </section></section>
-<section id="license-information" class="title-slide slide level1 center">
-<h1>License information</h1>
+<section id="references" class="title-slide slide level1 center">
+<h1>References</h1>
 <ul>
-<li>Creators (initial authors): Kevin Kunzmann <a href="https://github.com/kkmann/"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/kevin-kunzmann-6486a11bb/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></li>
-<li>In the current version, changes were done by (later authors): Shuang Li <a href="https://github.com/shuangli22"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a>, Daniel Sabanes Bove <a href="https://github.com/danielinteractive/"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/danielsabanesbove/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></li>
-<li>This work is licensed under the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</li>
-<li>The source files are hosted at <a href="https://github.com/RCONIS/workshop-r-swe-zrh">github.com/RCONIS/workshop-r-swe-zrh</a>, which is forked from the original version at <a href="https://github.com/openpharma/workshop-r-swe-mtl/">github.com/openpharma/workshop-r-swe-mtl</a>.</li>
-<li>Important: To use this work you must provide the name of the creators (initial authors), a link to the material, a link to the license, and indicate if changes were made</li>
+<li><a href="https://r-pkgs.org/license.html">Licensing chapter</a></li>
+<li><a href="https://svn.r-project.org/R/trunk/share/licenses/license.db">All possible licenses for CRAN packages</a></li>
+<li><a href="https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases">GitHub releases</a></li>
+<li><a href="https://cran.r-project.org/web/packages/policies.html">CRAN Repository Policy</a></li>
+<li><a href="https://builder.r-hub.io/">R-hub builder</a></li>
+<li><a href="https://contributions.bioconductor.org/index.html">Bioconductor packages</a></li>
+</ul>
+</section>
+
+<section id="exercise" class="title-slide slide level1 center">
+<h1>Exercise</h1>
+<p>Use the same repository created from template <a href="https://github.com/kkmann/simulatr">https://github.com/kkmann/simulatr</a></p>
+<ul>
+<li>Run CRAN like checks in RStudio: use <code>--as-cran</code> in check options</li>
+<li>Look at the CI/CD checks reported on your GitHub repository
+<ul>
+<li>Where are the <code>R CMD check</code> results?</li>
+</ul></li>
+<li>Enable github page through <code>use_pkgdown_github_pages</code></li>
+<li>Deploy the website with <code>pkgdown</code>
+<ul>
+<li>Need to change remote to <code>git</code></li>
+</ul></li>
+<li>Deploy the website through <code>use_github_action("pkgdown")</code>
+<ul>
+<li>(Optional) Check the automatic github page deploy action</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="license-information" class="title-slide slide level1 center">
+<h1>License Information</h1>
+<ul>
+<li><p>Creators (initial authors): Daniel Sabanes Bove <a href="https://github.com/danielinteractive/"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/danielsabanesbove/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a>, Friedrich Pahlke <a href="https://github.com/fpahlke/"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/pahlke/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a>, Liming Li <a href="https://github.com/clarkliming"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a>, Philippe Boileau <a href="https://pboileau.ca/"><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"></path></svg></a></p></li>
+<li><p>This work is licensed under the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p></li>
+<li><p>The source files are hosted at <a href="https://github.com/RCONIS/user2024-tutorial-gswep">github.com/RCONIS/user2024-tutorial-gswep</a>, which is forked from and a subset of the original version at <a href="https://github.com/RCONIS/workshop-r-swe-zrh">github.com/RCONIS/workshop-r-swe-zrh</a>.</p></li>
+<li><p>Important: To use this work you must provide the name of the creators (initial authors), a link to the material, a link to the license, and indicate if changes were made</p></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
@@ -789,8 +706,6 @@ Daniel Sabanés Bové
 </div>
 </div>
 </section>
-
-
     </div>
   </div>
 
@@ -1071,18 +986,7 @@ Daniel Sabanés Bové
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1114,7 +1018,29 @@ Daniel Sabanés Bové
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/RCONIS\.github\.io\/user2024-tutorial-gswep");
@@ -1122,7 +1048,7 @@ Daniel Sabanés Bové
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

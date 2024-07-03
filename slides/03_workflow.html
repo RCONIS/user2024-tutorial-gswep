@@ -11,11 +11,11 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.557">
+  <meta name="generator" content="quarto-1.5.53">
 
   <meta name="author" content="Friedrich Pahlke">
   <meta name="dcterms.date" content="2024-07-08">
-  <title>GSWEP4R Tutorial - 3 An R Package Engineering Workflow</title>
+  <title>GSWEP4R Tutorial – 3 An R Package Engineering Workflow</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -74,7 +74,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -88,7 +88,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -426,8 +426,7 @@ Friedrich Pahlke
 
 </div><div class="column" style="width:50%;">
 <p><span class="blue"><i class="fa-solid fa-earth-europe fa-4x" aria-label="earth-europe"></i></span></p>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 
@@ -462,8 +461,7 @@ Friedrich Pahlke
 <li class="fragment">Use in production</li>
 <li class="fragment">Maintenance</li>
 </ol>
-</div>
-</div>
+</div></div>
 </div>
 <div class="fragment">
 <div class="columns">
@@ -471,8 +469,7 @@ Friedrich Pahlke
 <p><em>Extensive documentation, huge paperwork, lots of manual work, lots of signatures, …</em></p>
 </div><div class="column" style="width:40%;">
 <p><span class="yellow"><i class="fa-solid fa-face-surprise fa-1x" aria-label="face-surprise"></i></span> <span class="yellow"><i class="fa-solid fa-face-flushed fa-2x" aria-label="face-flushed"></i></span> <span class="yellow"><i class="fa-solid fa-face-sad-cry fa-3x" aria-label="face-sad-cry"></i></span></p>
-</div>
-</div>
+</div></div>
 </div>
 </section></section>
 <section>
@@ -500,8 +497,7 @@ Friedrich Pahlke
 <li class="fragment">Use in production</li>
 <li class="fragment">Bug fixing + …</li>
 </ol>
-</div>
-</div>
+</div></div>
 </div>
 <div class="fragment">
 <p><span class="yellow"><i class="fa-solid fa-face-angry fa-2x" aria-label="face-angry"></i></span> Bad practice!</p>
@@ -541,8 +537,7 @@ Friedrich Pahlke
 <li>Save refactoring time when the Proof-of-Concept (<em>PoC</em>) becomes the release version</li>
 <li>You don’t have to be shy any longer about inviting other developers to contribute to the package on <a href="https://github.com/">GitHub</a></li>
 </ul>
-</div>
-</div>
+</div></div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>See also <a href="slides/04_quality.qmd">Ensuring Quality</a></p></li></ol></aside></section>
 <section id="why-practice-good-engineering-3" class="slide level2">
 <h2>Why practice good engineering?</h2>
@@ -647,8 +642,7 @@ Friedrich Pahlke
 <p><img data-src="resources/simulatr.png" class="quarto-figure quarto-figure-right" style="width:95.0%"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 <aside><ol class="aside-footnotes"><li id="fn4"><p>Based on <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a>, the easy-to-use markup language</p></li><li id="fn5"><p>The easy to use, online, collaborative LaTeX editor</p></li><li id="fn6"><p>A picture is worth a thousand words</p></li></ol></aside></section>
 <section id="example---step-3-packaging" class="slide level2">
 <h2>Example - Step 3: Packaging</h2>
@@ -738,106 +732,106 @@ $sd2
 
 $data
     group     values
-1       1 10.4159915
-2       1  2.4562225
-3       1 -0.5009038
-4       1  7.5266831
-5       1  8.1328092
-6       1  3.7620422
-7       1  5.5445364
-8       1  9.2153529
-9       1  5.1309395
-10      1  4.4606055
-11      1  2.3707541
-12      1  4.3846189
-13      1 -0.4281739
-14      1  3.5007731
-15      1  2.6714120
-16      1  6.7822112
-17      1  9.3061192
-18      1  7.9189273
-19      1  3.5266705
-20      1  1.2748061
-21      1  8.1650591
-22      1  1.2038604
-23      1  4.0211251
-24      1  9.4529536
-25      1  7.5595351
-26      1  3.7189228
-27      1  5.8161729
-28      1  0.8524566
-29      1  7.6636393
-30      1  3.7281444
-31      1  5.9265801
-32      1  0.3250277
-33      1  5.9103862
-34      1  9.9208268
-35      1  5.8445923
-36      1  1.6018385
-37      1  2.2473078
-38      1  3.1362330
-39      1  2.4661090
-40      1  2.1552485
-41      1  8.4743250
-42      1  8.5449469
-43      1  6.9436971
-44      1  7.3002472
-45      1  2.6243799
-46      1  4.7743301
-47      1  3.1341283
-48      1  2.8945922
-49      1  6.8427165
-50      1  2.1439305
-51      2  3.8095282
-52      2  5.9152142
-53      2  5.6449719
-54      2  6.9487937
-55      2  1.8310620
-56      2 12.6150372
-57      2 10.0426503
-58      2 11.0624145
-59      2  2.7281768
-60      2  4.5772773
-61      2 10.6672471
-62      2 -5.9520624
-63      2  3.3019916
-64      2  8.8363327
-65      2  4.1293902
-66      2 -1.8930975
-67      2  4.3156175
-68      2  3.9634250
-69      2 12.5858274
-70      2 12.4268449
-71      2  9.6276755
-72      2  7.2971067
-73      2  3.9382647
-74      2  6.2616793
-75      2 10.6246706
-76      2  2.2250211
-77      2  3.0580278
-78      2  0.5592187
-79      2 17.9988671
-80      2  6.8708260
-81      2  9.6686956
-82      2  8.1386316
-83      2 11.3668381
-84      2  9.6414575
-85      2  1.1417199
-86      2  8.7922432
-87      2  7.3091986
-88      2  8.0382281
-89      2 -0.9148689
-90      2 12.7839113
-91      2  6.5787856
-92      2 13.7695404
-93      2 18.3840360
-94      2  8.7660328
-95      2  9.1144050
-96      2  4.0432068
-97      2  7.4332249
-98      2  1.3441602
-99      2  4.6027297
-100     2  4.4509162
+1       1  3.3938985
+2       1  9.8238953
+3       1  6.6669470
+4       1  5.7771057
+5       1  4.6452932
+6       1  5.7344876
+7       1  6.7122920
+8       1  5.4557606
+9       1  2.8424207
+10      1  4.4678810
+11      1  8.9623155
+12      1  9.0781702
+13      1  5.7658559
+14      1  7.5951966
+15      1  5.8338741
+16      1  7.7960421
+17      1  4.2233859
+18      1 -0.5478374
+19      1  2.2439897
+20      1 -2.0689625
+21      1  4.3570538
+22      1  5.3809657
+23      1  0.3913757
+24      1  4.0419924
+25      1  2.9392673
+26      1  9.1634193
+27      1  7.0887001
+28      1  4.0193689
+29      1  2.5647884
+30      1  7.7912331
+31      1  3.5651845
+32      1  5.5586579
+33      1  5.4667134
+34      1 12.8777465
+35      1  2.5713637
+36      1  7.2001068
+37      1  3.9529587
+38      1 10.7955308
+39      1  6.4816800
+40      1  6.9260706
+41      1 -1.3486148
+42      1  0.9646818
+43      1  3.0873714
+44      1  2.0278386
+45      1  5.0979793
+46      1  3.2928704
+47      1  5.9817537
+48      1  0.4853977
+49      1  4.8355186
+50      1 -0.4166006
+51      2  9.8773501
+52      2  6.4633665
+53      2  6.8078710
+54      2 11.7888198
+55      2 11.1886344
+56      2  8.2752720
+57      2  8.6109487
+58      2 -0.9560692
+59      2  3.1766011
+60      2  4.8740099
+61      2  0.9041593
+62      2  1.5338381
+63      2  5.4071189
+64      2  6.1032742
+65      2  7.2414432
+66      2 18.8485398
+67      2 10.9362386
+68      2 13.0926918
+69      2  9.8129893
+70      2  8.5864882
+71      2 10.0583889
+72      2 12.2489023
+73      2 -3.8901454
+74      2 12.5667919
+75      2  2.9717165
+76      2  6.9083879
+77      2 -0.1472294
+78      2  8.2118837
+79      2  5.3982636
+80      2  7.3033834
+81      2  8.2906572
+82      2  9.1583861
+83      2  0.8399492
+84      2  5.5360296
+85      2  0.9668770
+86      2  5.8684798
+87      2  3.7553682
+88      2 -0.8820648
+89      2  7.3280230
+90      2 11.5194679
+91      2  2.5242605
+92      2  8.2751670
+93      2  2.4839225
+94      2  8.8035901
+95      2  5.7472371
+96      2 10.8400818
+97      2  8.0826942
+98      2 11.0004468
+99      2  9.9952581
+100     2 12.4342652
 
 attr(,"class")
 [1] "SimulationResult"</code></pre>
@@ -897,16 +891,16 @@ $data
 # A tibble: 100 × 2
    group values
    &lt;dbl&gt;  &lt;dbl&gt;
- 1     1 10.4  
- 2     1  2.46 
- 3     1 -0.501
- 4     1  7.53 
- 5     1  8.13 
- 6     1  3.76 
- 7     1  5.54 
- 8     1  9.22 
- 9     1  5.13 
-10     1  4.46 
+ 1     1   3.39
+ 2     1   9.82
+ 3     1   6.67
+ 4     1   5.78
+ 5     1   4.65
+ 6     1   5.73
+ 7     1   6.71
+ 8     1   5.46
+ 9     1   2.84
+10     1   4.47
 # ℹ 90 more rows</code></pre>
 </div>
 </div>
@@ -1056,11 +1050,10 @@ Taylor &amp; Francis Ltd.&nbsp;[<a href="https://amzn.to/3uLnxLd">Book</a> | <a 
 <section id="license-information" class="title-slide slide level1 center">
 <h1>License information</h1>
 <ul>
-<li>Creators (initial authors): Friedrich Pahlke <a href="https://github.com/fpahlke/"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/pahlke/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></li>
-<li>In the current version, changes were done by (later authors): Andrew Bean <a href="https://github.com/andrew-bean"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/andrew-bean-83539116/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></li>
-<li>This work is licensed under the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</li>
-<li>The source files are hosted at <a href="https://github.com/RCONIS/workshop-r-swe-zrh">github.com/RCONIS/workshop-r-swe-zrh</a>, which is forked from the original version at <a href="https://github.com/openpharma/workshop-r-swe-mtl/">github.com/openpharma/workshop-r-swe-mtl</a>.</li>
-<li>Important: To use this work you must provide the name of the creators (initial authors), a link to the material, a link to the license, and indicate if changes were made</li>
+<li><p>Creators (initial authors): Friedrich Pahlke <a href="https://github.com/fpahlke/"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/pahlke/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a>, Andrew Bean <a href="https://github.com/andrew-bean"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a> <a href="https://www.linkedin.com/in/andrew-bean-83539116/"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></p></li>
+<li><p>This work is licensed under the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p></li>
+<li><p>The source files are hosted at <a href="https://github.com/RCONIS/user2024-tutorial-gswep">github.com/RCONIS/user2024-tutorial-gswep</a>, which is forked from and a subset of the original version at <a href="https://github.com/RCONIS/workshop-r-swe-zrh">github.com/RCONIS/workshop-r-swe-zrh</a>.</p></li>
+<li><p>Important: To use this work you must provide the name of the creators (initial authors), a link to the material, a link to the license, and indicate if changes were made</p></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
@@ -1351,18 +1344,7 @@ Taylor &amp; Francis Ltd.&nbsp;[<a href="https://amzn.to/3uLnxLd">Book</a> | <a 
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1394,7 +1376,29 @@ Taylor &amp; Francis Ltd.&nbsp;[<a href="https://amzn.to/3uLnxLd">Book</a> | <a 
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/RCONIS\.github\.io\/user2024-tutorial-gswep");
@@ -1402,7 +1406,7 @@ Taylor &amp; Francis Ltd.&nbsp;[<a href="https://amzn.to/3uLnxLd">Book</a> | <a 
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

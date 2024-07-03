@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.557">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Daniel Sabanés Bové and Friedrich Pahlke">
 <meta name="keywords" content="rconis, gswep, r, gxp">
-<meta name="description" content="UseR! Tutorial">
+<meta name="description" content="useR! 2024 Tutorial">
 
-<title>GSWEP4R Tutorial - Good Software Engineering Practice for R Packages</title>
+<title>Good Software Engineering Practice for R Packages – GSWEP4R Tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    UseR! Tutorial
+    useR! 2024 Tutorial
   </div>
 </div>
 
@@ -191,18 +191,18 @@ Creators (initial authors):
 
 The current version was edited by
 - Daniel Sabanes Bove, https://github.com/danielinteractive/ and www.linkedin.com/in/danielsabanesbove/
+- Friedrich Pahlke, https://github.com/fpahlke/ and www.linkedin.com/in/pahlke/
 
 License: This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.
-The source files are hosted at https://github.com/RCONIS/workshop-r-swe-zrh, which is forked from
-the original version at https://github.com/openpharma/workshop-r-swe-mtl.
+The source files are hosted at https://github.com/RCONIS/user2024-tutorial-gswep, which is forked from and a subset of the original version at https://github.com/RCONIS/workshop-r-swe-zrh,.
 
 Important: To use this work you must provide the name of the creators (initial authors), a link to the material, a link to the license, and indicate if changes were made.
 -->
-<p>Welcome to the homepage of the tutorial <em>“Good Software Engineering Practice for R Packages”</em>, part of the useR! Conference 2024 in Salzburg, Austria. In this course you will learn hands-on skills and tools to engineer reliable R packages used in statistics. The workshop will be conducted in 3.5 hours and will be a mix of presentations and exercises. Participants need to be comfortable with writing functions in R and use their own laptops as a prerequisite.</p>
+<p>Welcome to the homepage of the tutorial <em>“Good Software Engineering Practice for R Packages”</em>, part of the <a href="https://events.linuxfoundation.org/user/">useR! Conference 2024</a> in Salzburg, Austria. In this course you will learn hands-on skills and tools to engineer reliable R packages. The workshop will be conducted in about 3 hours and will be a mix of presentations and exercises. Participants need to be comfortable with writing functions in R and use their own laptops as a prerequisite.</p>
 <section id="event-details" class="level2">
 <h2 class="anchored" data-anchor-id="event-details">Event Details</h2>
-<p>The event will be held on Monday July 8, 2024 14:00 - 17:30 CEST as an in-person tutorial in the room <a href="https://userconf2024.sched.com/venue/Tennegau?iframe=no">Tennegau</a>.</p>
+<p>This live event will be held on Monday July 8, 2024 14:00 - 17:30 CEST as an in-person tutorial in the room <a href="https://userconf2024.sched.com/venue/Tennegau?iframe=no">Tennegau</a>.</p>
 </section>
 <section id="description" class="level2">
 <h2 class="anchored" data-anchor-id="description">Description</h2>
@@ -237,11 +237,11 @@ Important: To use this work you must provide the name of the creators (initial a
 </tr>
 <tr class="even">
 <td>15:45 - 16:30 CEST</td>
-<td style="text-align: left;">Package quality + exercise</td>
+<td style="text-align: left;">R Package quality + exercise</td>
 </tr>
 <tr class="odd">
 <td>16:30 - 17:15 CEST</td>
-<td style="text-align: left;">Publication + practical</td>
+<td style="text-align: left;">Publication of R packages + practical</td>
 </tr>
 <tr class="even">
 <td>17:15 - 17:30 CEST</td>
@@ -252,28 +252,20 @@ Important: To use this work you must provide the name of the creators (initial a
 </section>
 <section id="prerequisites-technical-setup" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites-technical-setup">Prerequisites &amp; Technical Setup</h2>
-<p>Prior to the course, participants should</p>
+<p>Prior to the course, participants should:</p>
 <ul>
-<li>Set up a (free) <a href="https://github.com/join">GitHub.com account</a>.
-<ul>
-<li>Note: There are other git platforms like <a href="https://about.gitlab.com/">Gitlab</a> or <a href="https://bitbucket.org/">Bitbucket</a>, but we made the choice to go with GitHub.com for the course, since it is by far the most relevant git platform in the R community.</li>
-</ul></li>
-<li>Download and extract <a href="slides/download/simulatr.zip">simulatr.zip</a></li>
 <li>Install the latest <a href="https://www.r-project.org/">R</a> and <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> software.</li>
-<li>Install <a href="https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html">Rtools</a> (only on Windows and optional if you want to try out Rcpp)</li>
+<li>Install <a href="https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html">Rtools</a> (only on Windows).</li>
 <li>Install additional R packages using the <a href="slides/download/install.R">installation script</a>.</li>
+<li>Download and extract <a href="slides/download/simulatr.zip">simulatr.zip</a></li>
 </ul>
 <p>For the course, participants are required to use their own laptop to be able to participate in the exercises.</p>
 <section id="optional-reading-list" class="level3">
 <h3 class="anchored" data-anchor-id="optional-reading-list">Optional reading list</h3>
 <ul>
 <li>Excellent and very comprehensive <a href="https://r-pkgs.org/">R Packages (2e)</a></li>
-<li>(Hardcore) description of how <a href="https://cran.r-project.org/doc/manuals/R-exts.html">Writing R Extensions</a> works</li>
-<li><a href="https://docs.github.com/en/get-started/quickstart/hello-world">GitHub ‘Hello World’</a> tutorial on how to use GitHub.com (does not require git command line knowledge)</li>
-<li>Tutorial on <a href="https://support.posit.co/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">version control with git and SVN</a> (we will be using git)</li>
-<li>Command line git mini intro <a href="https://trygit.js.org/">trygit</a></li>
-<li><a href="https://www.youtube.com/watch?v=jN6tvgt3GK8">First steps with git &amp; github by RStudio</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/blob/main/git-github.pdf">RStudio cheatsheets/ Git &amp; GitHub</a></li>
+<li>(Hardcore) description about <a href="https://cran.r-project.org/doc/manuals/R-exts.html">Writing R Extensions</a> works</li>
+<li>Minimum Viable Good Practices for High Quality Statistical Software Packages: <a href="https://www.openstatsware.org/guide.html">openstatsguide</a></li>
 </ul>
 </section>
 </section>
@@ -285,6 +277,7 @@ Important: To use this work you must provide the name of the creators (initial a
 <li><a href="https://openpharma.github.io/workshop-r-swe-sf/">20th July 2023, San José, CA, US</a></li>
 <li><a href="https://openpharma.github.io/workshop-r-swe-md/">26th September 2023, Rockville, MD, US</a></li>
 <li><a href="https://openpharma.github.io/workshop-r-swe-mtl/">16th and 17th October 2023, Montreal, QC, CA</a></li>
+<li><a href="https://rconis.github.io/workshop-r-swe-zrh/">18th and 19th April 2024, Zurich, CH</a></li>
 </ul>
 
 
@@ -326,18 +319,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -369,7 +351,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/RCONIS\.github\.io\/user2024-tutorial-gswep");
@@ -377,7 +381,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
