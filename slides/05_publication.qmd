@@ -1,0 +1,267 @@
+---
+title: "5 Publication"
+description: "Publication of R packages + practical<br/>[Photo CC0 by Andrea Piacquadio on pexels.com]{.copyright}"
+image: thumbnails/publish.jpg
+---
+
+# Website with `pkgdown`
+
+```{r, echo = FALSE, results = 'hide'}
+# Workaround for the following Quarto issue (do not remove):
+# Quarto will not render embedded R code unless at least one R code chunk exists
+```
+
+## Setup of `pkgdown`
+
+- `pkgdown` makes it quick and easy to build a website for your package
+- After installing `pkgdown`, run `usethis::use_pkgdown()` to get started
+- Main configuration happens in `_pkgdown.yml` file
+- Many customizations can be applied, but bulk of work during development is
+  updating the `reference` section with names of `.Rd` files
+  
+## Example `_pkgdown.yml` File
+
+```yaml
+---
+url: https://openpharma.github.io/mmrm/latest-tag
+
+template:
+  bootstrap: 5
+  params:
+    ganalytics: UA-125641273-1
+
+navbar:
+  right:
+    - icon: fa-github
+      href: https://github.com/openpharma/mmrm
+
+reference:
+  - title: Package
+    contents:
+      - mmrm-package
+  - title: Functions
+    contents:
+      - mmrm
+      - fit_mmrm
+      - mmrm_control
+      - fit_single_optimizer
+      - refit_multiple_optimizers
+      - df_1d
+      - df_md
+      - component
+```
+
+##  {background-iframe="https://openpharma.github.io/mmrm/latest-tag/reference/index.html" background-interactive="true"}
+
+## Publication as GitHub Page
+
+- It's helpful for users to read the website online
+- GitHub is very helpful here because:
+  - A separate branch, `gh-pages`, stores the rendered website
+  - GitHub actions automatically render the website when the `main` branch
+    is updated
+- To get started, use `usethis::use_pkgdown_github_pages()`
+  - Or, manually deploy site with `pkgdown::deploy_to_branch()`
+
+##  {background-iframe="https://openpharma.github.io/mmrm/latest-tag/" background-interactive="true"}
+
+# Licensing, Open sourcing, Versioning
+
+## Licensing
+
+- High level categorization of licenses:
+  - "Permissive": Relaxed. Can be freely copied, modified, published (under the
+    same license).
+  - "Copyleft": Stricter. Same rights need to be preserved in derivative works.
+- R itself is licensed under GPL, but packages can choose, e.g.:
+    - `usethis::use_mit_license()` for permissive MIT 
+    - `usethis::use_gpl_license()` for copyleft GPL
+- Include minimum version, e.g. `GPL (>= 3)`
+    
+## Licensing (cont'd)
+
+- Need to be careful here when you bundle any code from other software
+  - Care must be taken that any copyright/license statements from copied or
+    modified code are preserved and authorship is not misrepresented
+- Are the licenses of your package and the source compatible?
+  - e.g. cannot copy/paste code from a GPL package and publish in an MIT package
+- `LICENSE` file optionally can contain further restrictions of the license
+
+## Open Sourcing
+
+- The easiest way to "open source" your R package is to make the GitHub
+  repository public
+- This allows for easy open source contributions from other developers via pull
+  requests
+- Please check with your organization first: 
+  - Are they ok to publish the software?
+  - What is the appropriate copyright holder? 
+- Also allows bugs to be filed and to have
+  the GitHub issues page in the package description
+  
+## Versioning
+
+- The `Version` field defines the package version
+- Syntax: Three integers separated by `.` or `-`
+  - Canonical form is: `x.y-z`, equivalent to `x.y.z`
+- Useful conventions of "semantic versioning": 
+  - `x` is major: Increment this for breaking changes
+  - `y` is minor: Increment this for new features
+  - `z` is patch: Increment this for bug fixes only
+  - `x.y.z.9000` and count up during development
+  - `usethis::use_version()` can help with this
+
+<!-- Keep in mind to update the `NEWS` file for any user-visible change -->
+
+# Checks Before Release
+
+## CRAN (The Comprehensive R Archive Network)
+
+- CRAN is the central repository for R packages
+- It has additional requirements beyond the standard package ones, which are 
+  described in the Repository Policy
+- Submitting a package indicates agreement with the policy
+- In particular: "The time of the volunteers is CRAN’s most precious resource, and they reserve the right to remove or modify packages on CRAN without notice or explanation (although notification will usually be given)."
+
+## CRAN (cont'd)
+
+- Only source packages can be submitted
+<!-- no binary executables are allowed -->
+  - But `.rda` data files are allowed
+- Need single designated maintainer (person, not mailing list)
+  - Additional `Contact` field could be used
+- Citations in author-year style, followed by `<doi:...>`
+- Reducing run time of tests, checks, examples, vignettes is important
+- Need to provide cross-platform portable code: 
+  CRAN runs checks on Windows, Mac, several Linux OS
+
+## CRAN (cont'd)
+
+`r emoji::emoji("exclamation")` A CRAN submission can be punishing, painful, and nerve-racking:
+
+The first release of the [rpact](https://cran.r-project.org/package=rpact)
+package took 5 weeks and 6 submission attempts; painful experiences:
+
+-   Some Linux machines may generate different random numbers than expected
+    (despite setting a seed)
+-   Not only errors and warnings lead to the rejection of a submitted package,
+    but also notes
+-   Your local Windows test system may be much faster than the CRAN system
+    (e.g., 5 times)
+-   Don't use "R Package for" in your package title
+-   The description of the package must be provided with a doi reference
+
+## CRAN (cont'd) {.scrollable}
+
+Example message informing about the rejection of the last
+[rpact](https://cran.r-project.org/package=rpact) submission:
+
+> Dear maintainer,
+> 
+> package rpact_3.3.2.tar.gz does not pass the incoming checks automatically,
+> please see the following pre-tests: \
+> Windows:
+> [00check.log](https://cran.r-project.org/web/checks/check_results_rpact.html)
+> **Status: OK**, Debian:
+> [00check.log](https://cran.r-project.org/web/checks/check_results_rpact.html)
+> **Status: OK**
+>
+> Please fix all problems and resubmit a fixed version via the webform.
+>
+> Best regards, \
+> CRAN teams' auto-check service
+>
+> r-devel-windows-x86_64 Check: Result: NA, Maintainer: 'Friedrich Pahlke'\
+> r-devel-windows-x86_64 Check: Overall checktime, Result: NOTE, Overall
+> checktime 12 min \> 10 min\
+> r-devel-linux-x86_64-debian-gcc Check: Result: Note_to_CRAN_maintainers
+> Maintainer: 'Friedrich Pahlke'
+
+
+## R-Hub to the Rescue
+
+::: columns
+::: {.column width="30%"}
+![](resources/r-hub.png)
+:::
+
+::: {.column width="70%"}
+- Free `R CMD check` runs on [different operating systems](https://docs.r-hub.io/#which-platform) before submitting to CRAN
+- Supported by the R consortium
+- Typically used via the [website](https://builder.r-hub.io/)
+- There is also an R API: `rhub::check()` is comfortable
+  - Note: New API with R-hub v2 since a few weeks ([details](https://r-hub.github.io/rhub/articles/rhubv2.html))
+:::
+:::
+
+# GitHub
+
+## Tags
+
+- Tags are a feature of Git, i.e., not specific to GitHub
+- Git can tag specific points in the code history as being important
+- Typically, for each release, create a tag `vx.y.z`
+- The value here is that users can later check out the package 
+  in the state of this release version
+  - Download in R: `remotes::install_github("org/package", ref = "vx.y.z")`
+  - Comparison of versions are also possible, etc.
+
+## Tags: Example
+
+![](resources/tags.png)
+
+## Releases
+
+- Based on Git tags, and a feature of GitHub
+- Are "deployable software packages to make them available for a wider audience
+  to download and use"
+- Contain release notes and links to the binary package files for download
+  - However, for R packages these `tar.gz` package files are rarely used
+    directly
+
+## Releases: Example
+
+![](resources/releases.png)
+
+# Bioconductor
+
+## A Note on Bioconductor
+
+- The [Bioconductor](https://www.bioconductor.org/) project develops, supports,
+  and disseminates open source software for the analysis of biological assays
+- Like CRAN, Bioconductor has additional package requirements
+- Packages are peer reviewed by community members
+- New packages and updates to existing packages are released semi-annually
+- Software is expected to be interoperable with other Bioconductor packages
+  through the re-use of common data structures and infrastructure
+
+# References
+
+- [Licensing chapter](https://r-pkgs.org/license.html)
+- [All possible licenses for CRAN packages](https://svn.r-project.org/R/trunk/share/licenses/license.db)
+- [GitHub releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+- [CRAN Repository Policy](https://cran.r-project.org/web/packages/policies.html)
+- [R-hub builder](https://builder.r-hub.io/)
+- [Bioconductor packages](https://contributions.bioconductor.org/index.html)
+
+# Exercise
+
+Use the same repository created from template [https://github.com/kkmann/simulatr](https://github.com/kkmann/simulatr)
+
+- Run CRAN like checks in RStudio: use `--as-cran` in check options
+- Look at the CI/CD checks reported on your GitHub repository
+  - Where are the `R CMD check` results?
+- Enable github page through `use_pkgdown_github_pages`
+- Deploy the website with `pkgdown`
+  - Need to change remote to `git`
+- Deploy the website through `use_github_action("pkgdown")`
+  - (Optional) Check the automatic github page deploy action
+  
+# License Information
+
+- Creators (initial authors): 
+  Daniel Sabanes Bove [`r fontawesome::fa("github")`](https://github.com/danielinteractive/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/),
+  Friedrich Pahlke [`r fontawesome::fa("github")`](https://github.com/fpahlke/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/pahlke/),
+  Liming Li [`r fontawesome::fa("github")`](https://github.com/clarkliming),
+  Philippe Boileau [`r fontawesome::fa("globe")`](https://pboileau.ca/)
+{{< include _license_footer.qmd >}}

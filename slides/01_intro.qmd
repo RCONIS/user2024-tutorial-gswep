@@ -19,7 +19,7 @@ author: Daniel Sabanés Bové and Friedrich Pahlke
 ::: {.column width="70%"}
 -   Ph.D. in Statistics from University of Zurich, Bayesian Model Selection
 -   Biostatistician at Roche for 5 years, Data Scientist at Google for 2 years, Statistical Software Engineer at Roche for the last 4 years
--   Co-founder of [inferential.bio](https://inferential.bio) and [RCONIS](https://rconis.com)
+-   Co-founder of [RCONIS](https://rconis.com)
 -   Multiple R packages on CRAN and Bioconductor, co-wrote book on Likelihood and Bayesian Inference, chair of `openstatsware`
 -   Feel free to connect
     [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/danielsabanesbove/)
@@ -66,10 +66,7 @@ author: Daniel Sabanés Bové and Friedrich Pahlke
 -   Create your own R `r fontawesome::fa("cube")`
 -   Learn about & apply professional `r fontawesome::fa("cube")` development workflow
 -   Learn & apply fundamentals of quality control for R `r fontawesome::fa("cube")`
--   Get crash-course in version control and modern collaboration techniques on GitHub.com
 -   Learn how to make an R `r fontawesome::fa("cube")` available to others
--   Optimize your R code for correctness and speed
--   Learn how to approach the design and modularity of Shiny apps and how to test them
 
 ## Program outline
 
@@ -94,7 +91,6 @@ author: Daniel Sabanés Bové and Friedrich Pahlke
 
 ## What you will need
 
--   [Github.com](https://github.com/) (free) account `r fontawesome::fa("github")`
 -   Local R development environment with
     -   git `r fontawesome::fa("git-alt")`
     -   Rtools/R/Rstudio IDE `r fontawesome::fa("r-project")`
@@ -107,8 +103,6 @@ author: Daniel Sabanés Bové and Friedrich Pahlke
 - Name? `r emoji::emoji("face")`
 - Organization? `r emoji::emoji("office")`
 - Motivation for this workshop/ what would you like to learn `r emoji::emoji("brain")`
-- Favorite food? `r emoji::emoji("food")`
-- Favorite music? `r emoji::emoji("music")`
 
 ## What do we mean by GSWEP4R\*?
 
@@ -224,8 +218,7 @@ knitr::include_graphics("resources/pkg_graph.png")
   [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/pahlke/),
   Kevin Kunzmann 
   [`r fontawesome::fa("github")`](https://github.com/kkmann/) 
-  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/kevin-kunzmann-6486a11bb/)
-- In the current version, changes were done by (later authors):   
+  [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/kevin-kunzmann-6486a11bb/),
   Andrew Bean
   [`r fontawesome::fa("github")`](https://github.com/andrew-bean)
   [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/andrew-bean-83539116/),

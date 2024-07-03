@@ -1,6 +1,6 @@
 ---
 title: "Good Software Engineering Practice for R Packages"
-description: 'UseR! Tutorial'
+description: 'useR! 2024 Tutorial'
 author: Daniel Sabanés Bové and Friedrich Pahlke
 institute: '[![RCONIS](slides/resources/RCONIS_100.png)](https://www.rconis.com "RPACT Company Website")'
 creator: Daniel Sabanés Bové and Friedrich Pahlke
@@ -25,21 +25,21 @@ Creators (initial authors):
 
 The current version was edited by
 - Daniel Sabanes Bove, https://github.com/danielinteractive/ and www.linkedin.com/in/danielsabanesbove/
+- Friedrich Pahlke, https://github.com/fpahlke/ and www.linkedin.com/in/pahlke/
 
 License: This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.
-The source files are hosted at https://github.com/RCONIS/workshop-r-swe-zrh, which is forked from
-the original version at https://github.com/openpharma/workshop-r-swe-mtl.
+The source files are hosted at https://github.com/RCONIS/user2024-tutorial-gswep, which is forked from and a subset of the original version at https://github.com/RCONIS/workshop-r-swe-zrh,.
 
 Important: To use this work you must provide the name of the creators (initial authors), a link to the material, a link to the license, and indicate if changes were made.
 -->
 ```
 
-Welcome to the homepage of the tutorial *"Good Software Engineering Practice for R Packages"*, part of the useR! Conference 2024 in Salzburg, Austria. In this course you will learn hands-on skills and tools to engineer reliable R packages used in statistics. The workshop will be conducted in 3.5 hours and will be a mix of presentations and exercises. Participants need to be comfortable with writing functions in R and use their own laptops as a prerequisite.
+Welcome to the homepage of the tutorial *"Good Software Engineering Practice for R Packages"*, part of the [useR! Conference 2024](https://events.linuxfoundation.org/user/) in Salzburg, Austria. In this course you will learn hands-on skills and tools to engineer reliable R packages. The workshop will be conducted in about 3 hours and will be a mix of presentations and exercises. Participants need to be comfortable with writing functions in R and use their own laptops as a prerequisite.
 
 ## Event Details
 
-The event will be held on Monday July 8, 2024 14:00 - 17:30 CEST as an in-person tutorial in the room [Tennegau](https://userconf2024.sched.com/venue/Tennegau?iframe=no).
+This live event will be held on Monday July 8, 2024 14:00 - 17:30 CEST as an in-person tutorial in the room [Tennegau](https://userconf2024.sched.com/venue/Tennegau?iframe=no).
 
 ## Description
 
@@ -47,11 +47,9 @@ Join us for an engaging 3-hour face-to-face course designed to enhance your R pr
 
 This course is tailored for individuals who are comfortable with writing functions in R and are looking to elevate their package development skills. Bring your laptop and be prepared to transform your approach to R package development through hands-on learning and collaboration. Whether you're looking to improve your workflow, meet regulatory standards, or simply enhance the quality of your statistical tools, this course offers valuable insights and skills to achieve your goals.
 
-
 ## Learning Outcomes
 
 Learn, understand, and practice good software engineering rules. Participants will delve into the significance of good engineering habits to avoid the pitfalls of maintenance overload, inefficient development, and regulatory non-compliance. By emphasizing best practices, the course will guide them towards faster releases on CRAN, saving valuable time on refactoring for PoC to release version transitions, and fostering an open environment for community contributions on GitHub. All course materials, including R scripts, will be shared with participants via GitHub, providing easy access to resources for continued learning and application beyond the course.
-
 
 ## Schedule 
 
@@ -60,33 +58,26 @@ Learn, understand, and practice good software engineering rules. Participants wi
 | 14:00 - 14:30 CEST | Introduction and outline                     |
 | 14:30 - 15:15 CEST | R packages, what are they? + practical       |
 | 15:15 - 15:45 CEST | Workflow for creating R packages + practical |
-| 15:45 - 16:30 CEST | Package quality + exercise                   |
-| 16:30 - 17:15 CEST | Publication + practical                      |
+| 15:45 - 16:30 CEST | R Package quality + exercise                 |
+| 16:30 - 17:15 CEST | Publication of R packages + practical        |
 | 17:15 - 17:30 CEST | Conclusion                                   |
-
 
 ## Prerequisites & Technical Setup
 
-Prior to the course, participants should
+Prior to the course, participants should:
 
--   Set up a (free) [GitHub.com account](https://github.com/join).
-    -   Note: There are other git platforms like [Gitlab](https://about.gitlab.com/) or [Bitbucket](https://bitbucket.org/), but we made the choice to go with GitHub.com for the course, since it is by far the most relevant git platform in the R community.
--   Download and extract [simulatr.zip](slides/download/simulatr.zip)
 -   Install the latest [R](https://www.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/) software.
--   Install [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html) (only on Windows and optional if you want to try out Rcpp)
+-   Install [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html) (only on Windows).
 -   Install additional R packages using the [installation script](slides/download/install.R).
+-   Download and extract [simulatr.zip](slides/download/simulatr.zip)
 
 For the course, participants are required to use their own laptop to be able to participate in the exercises.
 
 ### Optional reading list
 
 -   Excellent and very comprehensive [R Packages (2e)](https://r-pkgs.org/)
--   (Hardcore) description of how [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html) works
--   [GitHub 'Hello World'](https://docs.github.com/en/get-started/quickstart/hello-world) tutorial on how to use GitHub.com (does not require git command line knowledge)
--   Tutorial on [version control with git and SVN](https://support.posit.co/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) (we will be using git)
--   Command line git mini intro [trygit](https://trygit.js.org/)
--   [First steps with git & github by RStudio](https://www.youtube.com/watch?v=jN6tvgt3GK8)
--   [RStudio cheatsheets/ Git & GitHub](https://github.com/rstudio/cheatsheets/blob/main/git-github.pdf)
+-   (Hardcore) description about [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html) works
+-   Minimum Viable Good Practices for High Quality Statistical Software Packages: [openstatsguide](https://www.openstatsware.org/guide.html) 
 
 ## Past Events
 
@@ -95,3 +86,4 @@ For the course, participants are required to use their own laptop to be able to 
 -   [20th July 2023, San José, CA, US](https://openpharma.github.io/workshop-r-swe-sf/)
 -   [26th September 2023, Rockville, MD, US](https://openpharma.github.io/workshop-r-swe-md/)
 -   [16th and 17th October 2023, Montreal, QC, CA](https://openpharma.github.io/workshop-r-swe-mtl/)
+-   [18th and 19th April 2024, Zurich, CH](https://rconis.github.io/workshop-r-swe-zrh/)

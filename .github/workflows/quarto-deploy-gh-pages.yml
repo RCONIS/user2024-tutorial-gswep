@@ -23,7 +23,7 @@ jobs:
 
       - name: Install R Packages
         run: |
-          R -e 'install.packages(c("knitr", "rmarkdown", "checkmate", "emoji", "testthat", "ggraph", "tidygraph", "tidyverse", "covr", "dplyr"), lib="~/.R/library")'
+          R -e 'install.packages(c("knitr", "rmarkdown", "checkmate", "emoji", "testthat", "covr", "dplyr"), lib="~/.R/library")'
         env:
           R_LIBS_USER: ~/.R/library
 
