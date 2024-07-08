@@ -14,6 +14,15 @@ author: Daniel Sabanés Bové
 -   Packaging a set of functions is an ideal way to share with collaborators and the public
 -   Start small and simple and over time you can learn additional options
 
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+library(emoji)
+```
+
 ## Engineering Workflow
 
 -   Use a workable workflow:\

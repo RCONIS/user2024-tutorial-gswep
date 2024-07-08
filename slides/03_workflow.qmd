@@ -595,7 +595,8 @@ Document your functions with
 # License information
 
 - Creators (initial authors): 
-  Friedrich Pahlke [`r fontawesome::fa("github")`](https://github.com/fpahlke/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/pahlke/),
+  Friedrich Pahlke [`r fontawesome::fa("github")`](https://github.com/fpahlke/) [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/pahlke/)
+- In the current version, changes were done by (later authors): 
   Andrew Bean 
   [`r fontawesome::fa("github")`](https://github.com/andrew-bean) 
   [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/andrew-bean-83539116/)
